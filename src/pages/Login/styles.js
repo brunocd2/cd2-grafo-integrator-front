@@ -52,9 +52,8 @@ export const LoginRightWrapper = styled.main`
   width: 100%;
   
   > img {
-    width: 8rem;
-    background-color: var(--branding);
-    margin-bottom: 1rem;
+    width: 15rem;
+    margin-bottom: 2.5rem;
     @media (min-width: 700px) {
       display: none;
     }
@@ -65,8 +64,8 @@ export const LoginRightWrapper = styled.main`
     font-size: 28px;
     margin-bottom: 4.5rem;
   
-    @media (min-width: 700px) {
-      font-size: 1.25rem;
+    @media (max-width: 700px) {
+      margin-bottom: 2.5rem;
     }
   }
 
