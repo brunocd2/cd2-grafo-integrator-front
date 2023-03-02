@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { LoginLeftWrapper, LoginRightWrapper } from "./styles";
 
 import Logo from '../../assets/logo.png';
-import LogoMobile from '../../assets/logo.png';
+import LogoMobile from '../../assets/logoMobile.png';
 import MailIcon from '../../assets/icons/mail.png';
 import VisibilityIcon from '../../assets/icons/visibility.png';
 import VisibilityOffIcon from '../../assets/icons/visibility_off.png';
