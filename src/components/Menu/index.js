@@ -169,10 +169,10 @@ export default function Menu({ hideRoutes }) {
                     onClick={() => handleNavigate('/produtos-cadastrados')}
                     className={location.pathname === '/produtos-cadastrados' ? 'active' : ''}
                   >
-                    item 1
+                    Cadastrar usuário
                   </span>
                   <span onClick={() => handleNavigate('/produtos-cadastrados')}>
-                    item 2
+                    Configurações
                   </span>
                 </div>
               }
