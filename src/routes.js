@@ -13,7 +13,7 @@ export default function Routes() {
       <Menu hideRoutes={["/"]}/>
       <RoutesDom>
         <Route path="/" element={<Login />} />
-        <Route path="/produtos-cadastrados" element={<Products />} />        
+        <Route path="/produtos-cadastrados/:filterType?/:filter?" element={<Products />} />        
         <Route path="/notificacoes" element={<Notifications />} />        
         <Route path="/dashboard" element={<Dashboard />} />        
       </RoutesDom>

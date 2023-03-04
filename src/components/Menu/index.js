@@ -15,6 +15,7 @@ import NotificationsActiveIcon from '../../assets/icons/menu/notifications_activ
 import SettingsIcon from '../../assets/icons/menu/settings.png';
 import LogoutIcon from '../../assets/icons/menu/logout.png';
 import HamburguerIcon from '../../assets/icons/menu/hamburguer.png';
+import { getAllProducts, getProductsByCategory, getProductsByPartner } from "../../services/api";
 
 export default function Menu({ hideRoutes }) {
   const location = useLocation();
@@ -22,41 +23,50 @@ export default function Menu({ hideRoutes }) {
   const [activeSubMenu, setActiveSubMenu] = useState(null);
   const [activeInsideSubMenu, setActiveInsideSubMenu] = useState(null);
   const [showFullScreenMenu, setShowFullScreenMenu] = useState(false);
-  const { notifications, categories, partners } = useContext(GlobalContext);
+  const { notifications, categories, partners, setProducts } = useContext(GlobalContext);
 
   function handleClickSubMenu(subMenu) {
-    subMenu === activeSubMenu 
+    subMenu === activeSubMenu
       ? setActiveSubMenu(null)
       : setActiveSubMenu(subMenu);
   }
 
   function handleClickInsideSubMenu(insideSubMenu) {
-    insideSubMenu === activeInsideSubMenu 
-      ? setActiveInsideSubMenu(null) 
+    insideSubMenu === activeInsideSubMenu
+      ? setActiveInsideSubMenu(null)
       : setActiveInsideSubMenu(insideSubMenu)
   }
 
-  function handleNavigate(route) {
-    navigate(route)
-    setShowFullScreenMenu(false); 
+  function handleNavigate(route, filterType, filter) {
+    if (filterType) {
+      filterType === 'categoria'
+        && getProductsByCategory(filter).then(products => setProducts(products));
+      filterType === 'parceiro'
+        && getProductsByPartner(filter).then(products => setProducts(products));
+      navigate(route + `/${filterType}/${filter}`);
+    } else {
+      getAllProducts().then(products => setProducts(products));
+      navigate(route);
+    }
+    setShowFullScreenMenu(false);
   }
 
-  if(!hideRoutes.includes(location.pathname)) {
+  if (!hideRoutes.includes(location.pathname)) {
     return (
       <>
         <MobileMenuIcon onClick={() => setShowFullScreenMenu(true)}>
-          <img src={HamburguerIcon} alt="-"/>
+          <img src={HamburguerIcon} alt="-" />
         </MobileMenuIcon>
         <MenuWrapper showFullScreen={showFullScreenMenu}>
           <button className="close" onClick={() => setShowFullScreenMenu(false)}>
             X
           </button>
-          <img src={Logo} alt="domazzi"/>
+          <img src={Logo} alt="domazzi" />
           <span className="divider" />
           <nav>
             <div>
               <h2>Operações</h2>
-              <span 
+              <span
                 onClick={() => handleNavigate('/dashboard')}
                 className={location.pathname === '/dashboard' ? 'active' : ''}
               >
@@ -66,14 +76,14 @@ export default function Menu({ hideRoutes }) {
               <span onClick={() => handleClickSubMenu('products')}>
                 <img src={ProductsIcon} alt="" />
                 Produtos
-                <img 
-                  className="rightIcon" alt="" 
-                  src={activeSubMenu === 'products' ? ArrowUpIcon : ArrowDownIcon} 
+                <img
+                  className="rightIcon" alt=""
+                  src={activeSubMenu === 'products' ? ArrowUpIcon : ArrowDownIcon}
                 />
               </span>
               {activeSubMenu === 'products' &&
                 <div className="subMenuContent">
-                  <span 
+                  <span
                     onClick={() => handleNavigate('/produtos-cadastrados')}
                     className={location.pathname === '/produtos-cadastrados' ? 'active' : ''}
                   >
@@ -81,52 +91,52 @@ export default function Menu({ hideRoutes }) {
                   </span>
                   <span onClick={() => handleClickInsideSubMenu('categories')} className="fullWidth">
                     Categorias
-                    <img 
-                      className="rightIcon" 
-                      src={activeInsideSubMenu === 'categories' ? ArrowUpIcon : ArrowDownIcon}  
-                      alt="" 
+                    <img
+                      className="rightIcon"
+                      src={activeInsideSubMenu === 'categories' ? ArrowUpIcon : ArrowDownIcon}
+                      alt=""
                     />
                   </span>
-                  {activeInsideSubMenu === 'categories' && 
+                  {activeInsideSubMenu === 'categories' &&
                     <div className="subMenuContent insideSubmenu">
                       {categories.map((category, index) =>
                         <span key={index} onClick={() => handleNavigate('/produtos-cadastrados')}>
                           {category}
-                        </span> 
+                        </span>
                       )}
                     </div>
                   }
                   <span onClick={() => handleClickInsideSubMenu('partners')} className="fullWidth">
                     Parceiros
-                    <img 
-                      className="rightIcon" 
-                      src={activeInsideSubMenu === 'partners' ? ArrowUpIcon : ArrowDownIcon}                    
-                      alt="" 
+                    <img
+                      className="rightIcon"
+                      src={activeInsideSubMenu === 'partners' ? ArrowUpIcon : ArrowDownIcon}
+                      alt=""
                     />
-                    
+
                   </span>
-                  {activeInsideSubMenu === 'partners' && 
+                  {activeInsideSubMenu === 'partners' &&
                     <div className="subMenuContent insideSubmenu">
                       {partners.map((partner, index) =>
                         <span key={index}
-                          onClick={() => handleNavigate('---')}
-                          // className={location.pathname === '/produtos-cadastrados' ? 'active' : ''}
+                          onClick={() => handleNavigate('produtos-cadastrados', 'parceiro', partner)}
+                          className={location.pathname.replace('%20', ' ') === `/produtos-cadastrados/parceiro/${partner}` ? 'active' : ''}
                         >{partner}</span>
                       )}
-                  </div>
+                    </div>
                   }
                 </div>
               }
             </div>
             <div className="mid">
-            <h2>Mensageria</h2>
-              <span 
+              <h2>Mensageria</h2>
+              <span
                 onClick={() => handleNavigate('/notificacoes')}
                 className={location.pathname === '/notificacoes' ? 'active' : 'notification'}
               >
-                <img 
-                  src={location.pathname === '/notificacoes' ? NotificationsActiveIcon : NotificationsIcon } 
-                  alt="" 
+                <img
+                  src={location.pathname === '/notificacoes' ? NotificationsActiveIcon : NotificationsIcon}
+                  alt=""
                 />
                 Notificações
                 {notifications.length > 0 &&
@@ -145,24 +155,24 @@ export default function Menu({ hideRoutes }) {
               <span onClick={() => handleClickSubMenu('configurations')}>
                 <img src={SettingsIcon} alt="" />
                 Configurações
-                <img 
+                <img
                   className="rightIcon" alt=""
-                  src={activeSubMenu === 'products' ? ArrowUpIcon : ArrowDownIcon} 
+                  src={activeSubMenu === 'products' ? ArrowUpIcon : ArrowDownIcon}
                 />
               </span>
-                {activeSubMenu === 'configurations' &&
-                  <div className="subMenuContent">
-                    <span 
-                      onClick={() => handleNavigate('/produtos-cadastrados')}
-                      className={location.pathname === '/produtos-cadastrados' ? 'active' : ''}
-                    >
-                      item 1
-                    </span>
-                    <span onClick={() => handleNavigate('/produtos-cadastrados')}>
-                      item 2
-                    </span>
-                  </div>
-                }
+              {activeSubMenu === 'configurations' &&
+                <div className="subMenuContent">
+                  <span
+                    onClick={() => handleNavigate('/produtos-cadastrados')}
+                    className={location.pathname === '/produtos-cadastrados' ? 'active' : ''}
+                  >
+                    item 1
+                  </span>
+                  <span onClick={() => handleNavigate('/produtos-cadastrados')}>
+                    item 2
+                  </span>
+                </div>
+              }
               <span onClick={() => handleNavigate('/')}>
                 <img src={LogoutIcon} alt="" />
                 Sair da aplicação

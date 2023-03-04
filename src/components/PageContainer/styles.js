@@ -25,6 +25,7 @@ export const PageWrapper = styled.section`
       font-weight: 600;
       font-size: 20px;
       color: var(--branding);
+      text-transform: capitalize;
     }
   }
 
