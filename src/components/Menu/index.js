@@ -100,7 +100,10 @@ export default function Menu({ hideRoutes }) {
                   {activeInsideSubMenu === 'categories' &&
                     <div className="subMenuContent insideSubmenu">
                       {categories.map((category, index) =>
-                        <span key={index} onClick={() => handleNavigate('/produtos-cadastrados')}>
+                        <span key={index}
+                          onClick={() => handleNavigate('/produtos-cadastrados', 'categoria', category)}
+                          className={location.pathname === `/produtos-cadastrados/categoria/${category}` ? 'active' : ''}
+                        >
                           {category}
                         </span>
                       )}
