@@ -23,3 +23,8 @@ export async function login(userInfos) {
   const response = await axios.post('/login', userInfos);
   console.log(response.data);
 }
+
+export async function forgotPassword(email) {
+  const response = await axios.post('/forgot', {email});
+  console.log(response.data);
+}

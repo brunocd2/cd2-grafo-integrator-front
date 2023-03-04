@@ -118,9 +118,15 @@ export default function Products() {
 
   useEffect(() => {
     if(filterType) {
+      const label = filterType.charAt(0).toUpperCase() + filterType.slice(1);
+
       setSelectedFilters([
-        {label: filterType.charAt(0).toUpperCase() + filterType.slice(1), value: filter}
-      ])
+        {label, value: filter, inTable: filterType}
+      ]);
+
+      handleFilter();
+    } else {
+      setSelectedFilters([]);
     }
   }, [filterType]);
 
@@ -201,7 +207,7 @@ export default function Products() {
 
       <ShowPerPageArea>
         <label>Mostrar</label>
-        <input type="number" value={showPerPage} onChange={handleSetShowPerPage}  inputMode="numeric" pattern="\d*" />
+        <input type="number" value={showPerPage} onChange={handleSetShowPerPage}  inputMode="numeric" pattern="\d*" min={0}/>
         <label>Produtos por página</label>
       </ShowPerPageArea>
 
