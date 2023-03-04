@@ -10,7 +10,7 @@ import VisibilityOffIcon from '../../assets/icons/visibility_off.png';
 import LockIcon from '../../assets/icons/lock.png';
 import InputWithIcon from "../../components/InputWithIcon";
 import Button from "../../components/Button";
-import { getAllProducts } from "../../services/api";
+import { getAllProducts, login } from "../../services/api";
 import { GlobalContext } from '../../contexts/global';
 import Loading from "../../components/Loading";
 
@@ -28,13 +28,25 @@ export default function Login() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // AGUARDANDO LOGIN BACK-END
+
     setIsLoading(true);
-    getAllProducts().then(products => {
-      setIsLoading(false);
-      setProducts(products);
-      navigate('/dashboard');
-    });
+
+    //--- Waiting login access to test ---\\
+
+    // login({
+    //   email,
+    //   password
+    // }).then(success => {
+      getAllProducts().then(products => {
+        setIsLoading(false);
+        setProducts(products);
+        navigate('/dashboard');
+      });
+    // }).catch(error => {
+    //   alert('Falha ao logar, verifique as credenciais!');
+    //   setIsLoading(false);
+    //   console.log(error);
+    // });
   } 
 
   return (
