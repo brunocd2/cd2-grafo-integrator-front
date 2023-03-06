@@ -33,20 +33,20 @@ export default function Login() {
 
     //--- Waiting login access to test ---\\
 
-    // login({
-    //   email,
-    //   password
-    // }).then(success => {
+    login({
+      email,
+      password
+    }).then(success => {
     getAllProducts().then(products => {
       setIsLoading(false);
       setProducts(products);
       navigate('/dashboard');
     });
-    // }).catch(error => {
-    //   alert('Falha ao logar, verifique as credenciais!');
-    //   setIsLoading(false);
-    //   console.log(error);
-    // });
+    }).catch(error => {
+      alert('Falha ao logar, verifique as credenciais!');
+      setIsLoading(false);
+      console.log(error);
+    });
   }
 
   return (
