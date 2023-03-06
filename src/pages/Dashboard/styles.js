@@ -131,6 +131,7 @@ export const CardsArea = styled.section`
 
 export const DefaultDashboardWrapper = styled.section`
   display: flex;
+  width: 100%;
   flex-direction: column;
   background-color: #FFFFFF;
   border: 1px solid #E7E8F2;
