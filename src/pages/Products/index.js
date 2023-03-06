@@ -48,16 +48,18 @@ export default function Products() {
     const row = Object.keys(product).map(key => product[key]);
     return row;
   })
+
   const [data, setData] = useState(database);
+
   const filters = [
     // {label: 'Produto', inTable: 'Descrição Domazzi'},
     {label: 'Produto', inTable: 'codigo_acesso_principal'},
-    {label: 'Exportador', inTable: 'Exportador'},
-    {label: 'Parceiro', inTable: 'Parceiro'},
-    {label: 'Categoria', inTable: 'Categoria'},
-    {label: 'Ref.Parceiro', inTable: 'Referência Parceiro'},
-    {label: 'Ref.Domazzi', inTable: 'Referência Domazzi'},
-    {label: 'Desc.Parceiro', inTable: 'Descrição Parceiro'},
+    {label: 'Exportador', inTable: 'exportador'},
+    {label: 'Parceiro', inTable: 'parceiro'},
+    {label: 'Categoria', inTable: 'categoria'},
+    // {label: 'Ref.Parceiro', inTable: 'Referência Parceiro'},
+    {label: 'Ref.Domazzi', inTable: 'referencia_domazzi'},
+    {label: 'Desc.Parceiro', inTable: 'descricao_produto'},
   ];
   const [selectedFilters, setSelectedFilters] = useState([]);
 
@@ -69,9 +71,11 @@ export default function Products() {
 
   function handleFilter() {
     let newData = [...database];
+
     selectedFilters.forEach((filter, filterIndex) => {
       if(filter.value) {
         const index = header.findIndex(element => element === filter.inTable);
+
         if(filterIndex === 0) {
           newData = database.filter(row => {
             return row[index].toUpperCase().includes(filter.value.toUpperCase());
@@ -92,8 +96,9 @@ export default function Products() {
   function handleSearch() {
     if(search) {
       let newData = database.filter(row => {
-        return row[1].toUpperCase().includes(search.toUpperCase());
+        return row[2].toUpperCase().includes(search.toUpperCase());
       });
+
       setData(newData);
     } else {
       setData(database);
@@ -137,7 +142,9 @@ export default function Products() {
           <header>
             <h2>Filtrar produtos</h2>
           </header>
+
           <label>Selecione o filtro:</label>
+          
           <div>
             {filters.map(filter => (
               <label key={filter.label}>
@@ -156,6 +163,7 @@ export default function Products() {
                     })
                   }}
                 />
+
                 {filter.label}
                 {selectedFilters.some(element => element.label === filter.label) &&
                   <input 
@@ -180,6 +188,7 @@ export default function Products() {
           </div>
         </ModalContent>
       </Modal>
+
       <FilterArea>
         <div >
           <FilterButton   color="branding" onClick={() => setModalOpened(true)} >
@@ -192,6 +201,7 @@ export default function Products() {
             Exportar Excel     
           </FilterButton> 
         </div>
+
         <div>
           <label> 
             <InputWithIcon 
@@ -207,6 +217,7 @@ export default function Products() {
 
       <ShowPerPageArea>
         <label>Mostrar</label>
+
         <input type="number" value={showPerPage} onChange={handleSetShowPerPage}  inputMode="numeric" pattern="\d*" min={0}/>
         <label>Produtos por página</label>
       </ShowPerPageArea>

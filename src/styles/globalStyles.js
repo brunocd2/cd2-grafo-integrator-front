@@ -58,4 +58,11 @@ export const GlobalStyle = createGlobalStyle`
       filter: brightness(1.2);
     }
   }
+
+  span.error {
+    font-family: Poppins, sans-serif;
+    color: var(--red);
+    text-align: center;
+    margin-top: 0.25rem;
+  }
 `

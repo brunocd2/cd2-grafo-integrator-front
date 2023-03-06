@@ -16,6 +16,7 @@ export default function GlobalProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [partners, setPartners] = useState([]);
+  const [session, setSession] = useState(null);
 
   useEffect(() => {
     if(products.length > 0) {
@@ -40,6 +41,7 @@ export default function GlobalProvider({ children }) {
       notifications, setNotifications,
       products, setProducts,
       categories, partners,
+      session, setSession
     }}>
       {children}
     </GlobalContext.Provider>

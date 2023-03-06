@@ -4,11 +4,9 @@ import Routes from "./routes";
 export default function App() {
   return (
     <GlobalProvider>
-           <div className="container">
+      <div className="container">
         <Routes />
       </div>
     </GlobalProvider>
-
-    
   );
 }

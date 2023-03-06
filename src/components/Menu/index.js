@@ -167,7 +167,7 @@ export default function Menu({ hideRoutes }) {
                 <div className="subMenuContent">
                   <span
                     onClick={() => handleNavigate('/produtos-cadastrados')}
-                    className={location.pathname === '/produtos-cadastrados' ? 'active' : ''}
+                  // className={location.pathname === '/produtos-cadastrados' ? 'active' : ''}
                   >
                     Cadastrar usuário
                   </span>
