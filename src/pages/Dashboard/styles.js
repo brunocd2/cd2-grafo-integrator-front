@@ -138,7 +138,6 @@ export const DefaultDashboardWrapper = styled.section`
   border-radius: 6px;
   margin-bottom: 20px;
   min-width: 350px;
-  width: 100%;
   flex: ${props => props.isBarChart ? 1 : '0'};
   margin-left: ${props => props.isPieChart ? '20px' : '0'};
   
