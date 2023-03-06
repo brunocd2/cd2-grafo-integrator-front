@@ -22,7 +22,7 @@ export default function PieChart({}) {
     colors: ["#784EDE", "#00ADDD", "#4E73DF"],
     legend: 'none',
     pieSliceTextStyle: {
-      fontSize: 12,
+      fontSize: 10,
     },
     pieSliceText: 'value',
     chartArea: {
@@ -32,7 +32,7 @@ export default function PieChart({}) {
   };
   
   return (
-    <DefaultDashboardContainer title="Qtd. Entradas por Parceiro (un)" isChart isPieChart>
+    <DefaultDashboardContainer title="Entradas x Parceiro (un)" isChart isPieChart>
       <Chart
         chartType='PieChart'
         data={data}
