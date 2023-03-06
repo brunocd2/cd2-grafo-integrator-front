@@ -74,7 +74,7 @@ export default function Dashboard() {
             />
           </div>
 
-          <div className="cardRow" style={'margin-right: -5px;'}>
+          <div className="cardRow" >
             <Card title="Importações Realizadas Hoje" value="12 unidades." noComparison />
 
             <Card
