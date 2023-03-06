@@ -34,7 +34,7 @@ export default function Dashboard() {
 
       <DashboardFilterArea>
         <div>
-          <label>Filtrar por Período:</label>
+          <label>Filtrar:</label>
           <div>
             <select>
               {dates.map(date => <option key={date} value={date}>{date}</option>)}
@@ -81,9 +81,7 @@ export default function Dashboard() {
               detail="8 clientes - último mês"
             />
           </div>
-        </div>
-
-        <DefaultDashboardContainer title="Resumo do Produto">
+          <DefaultDashboardContainer title="Resumo do Produto">
           <h3>Coca Cola 2L</h3>
           <ul>
             <li>
@@ -91,6 +89,8 @@ export default function Dashboard() {
                 <option>Hippo</option>
                 <option>Zaffari</option>
                 <option>Super Pão</option>
+                <option>Armazém do Grão</option>
+
               </select>
             </li>
 
@@ -106,11 +106,15 @@ export default function Dashboard() {
             <li>Preço Saída: R$15,57</li>
           </ul>
         </DefaultDashboardContainer>
+        <PieChart />
+
+        </div>
+
+      
       </CardsArea>
 
       <ChartsRow>
         <BarCharts />
-        <PieChart />
       </ChartsRow>
 
       <MetricProducts>
