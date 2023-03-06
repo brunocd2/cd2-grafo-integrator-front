@@ -139,7 +139,6 @@ export const DefaultDashboardWrapper = styled.section`
   margin-bottom: 20px;
   min-width: 350px;
   flex: ${props => props.isBarChart ? 1 : '0'};
-  margin-left: ${props => props.isPieChart ? '20px' : '0'};
   
   select.chart {
     margin: 1rem 0;

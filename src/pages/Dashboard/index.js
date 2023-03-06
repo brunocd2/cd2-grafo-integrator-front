@@ -51,14 +51,15 @@ export default function Dashboard() {
       </DashboardFilterArea>
 
       <CardsArea>
-      <div>
+      
+        <div className="cards">
+        <div>
           
           <InputWithIcon
-            placeholder="Insira um produto"
+            placeholder="Filtre por produto"
             right={{ src: SearchIcon }}
           />
         </div>
-        <div className="cards">
           <div className="cardRow">
             <Card
               title="Total Geral de Produtos Importados"
