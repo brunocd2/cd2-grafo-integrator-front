@@ -181,8 +181,8 @@ export default function Products() {
         </ModalContent>
       </Modal>
       <FilterArea>
-        <div>
-          <FilterButton font-size="12px;" color="branding" onClick={() => setModalOpened(true)} >
+        <div >
+          <FilterButton   color="branding" onClick={() => setModalOpened(true)} >
             <img src={FilterIcon} alt="" />
             Filtrar por:        
           </FilterButton> 
@@ -193,7 +193,7 @@ export default function Products() {
           </FilterButton> 
         </div>
         <div>
-          <label>Pesquisar: 
+          <label> 
             <InputWithIcon 
               placeholder="Busque por um título"
               right={{src: SearchIcon, onClick: () => handleSearch()}}

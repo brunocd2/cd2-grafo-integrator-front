@@ -5,7 +5,7 @@ export const ButtonWrapper = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  font-size: 14px;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   background: var(--${props => props.color});
