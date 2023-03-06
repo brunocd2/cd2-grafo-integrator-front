@@ -14,12 +14,12 @@ export default function Dashboard() {
 
   const dates = ['01/2023', '02/2023', '03/2023', '04/2023', '05/2023'];
 
-  const metricsHeader = ['Parceiros', 'Estoque', 'Qtd. Última Entrada', 'Qtd. Última Saída', 'Preço Última Entrada', 'Preço Última Saída']
+  const metricsHeader = ['Parceiros', 'Estoque', 'Qtd. Última Entrada', 'Qtd. Última Saída']
 
   const metricsBody = [
-    ['Hippo', '7.000 unidades', '36 unidades', '13 unidades', 'R$15,17', 'R$15,17'],
-    ['Zaffari', '550 unidades', '32 unidades', '12 unidades', 'R$15,58', 'R$15,58'],
-    ['Super Pão', '357 unidades', '37 unidades', '10 unidades', 'R$16,04', 'R$16,04'],
+    ['Hippo', '7.000 unidades', '36 unidades', '13 unidades'],
+    ['Zaffari', '550 unidades', '32 unidades', '12 unidades'],
+    ['Super Pão', '357 unidades', '37 unidades', '10 unidades'],
   ];
 
   return (
