@@ -14,12 +14,12 @@ export default function Dashboard() {
 
   const dates = ['01/2023', '02/2023', '03/2023', '04/2023', '05/2023'];
 
-  const metricsHeader = ['Parceiros', 'Estoque', 'Qtd. Última Entrada', 'Qtd. Última Saída']
+  const metricsHeader = ['Parceiros', 'Estoque', 'Qtd. Últ-Entrada', 'Qtd. Últ-Saída']
 
   const metricsBody = [
-    ['Hippo', '7.000 unidades', '36 unidades', '13 unidades'],
-    ['Zaffari', '550 unidades', '32 unidades', '12 unidades'],
-    ['Super Pão', '357 unidades', '37 unidades', '10 unidades'],
+    ['Hippo', '7.000 un.', '36 un.', '13 un.'],
+    ['Zaffari', '550 un.', '32 un.', '12 un.'],
+    ['Super Pão', '357 un.', '37 un.', '10 un.'],
   ];
 
   return (
@@ -75,7 +75,7 @@ export default function Dashboard() {
   />
 </div>
 
-          <div className="cardRow">
+          
             <Card
               title="Total Geral de Produtos Importados"
               value="1278 un." gains={2.5}
@@ -87,9 +87,6 @@ export default function Dashboard() {
               value="1112 un." gains={0.5}
               detail="1050 un. - último mês"
             />
-          </div>
-
-          <div className="cardRow" >
             <Card title="Importações Realizadas Hoje" value="12 unidades." noComparison />
 
             <Card
@@ -97,8 +94,7 @@ export default function Dashboard() {
               value="4 clientes" gains={-50}
               detail="8 clientes - último mês"
             />
-          </div>
-         
+          
           <DefaultDashboardContainer title="Resumo do Produto">
           <h3>Coca Cola 2L</h3>
           <ul>

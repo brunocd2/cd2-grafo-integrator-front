@@ -86,7 +86,6 @@ export const CardsArea = styled.section`
       display: flex;
       flex-direction: column;
       font-family: 'Poppins', sans-serif;
-      margin-right: 20px;
       margin-bottom: 20px;
       flex: 1;
 
