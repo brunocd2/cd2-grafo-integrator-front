@@ -167,6 +167,7 @@ export const DefaultDashboardWrapper = styled.section`
 
   div.content {
     padding: 0 40px;
+    padding-bottom:50px; 
     padding-top: ${props => props.isBarChart ? '2rem' : '0'};
 
     h3 {

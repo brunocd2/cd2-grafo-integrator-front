@@ -47,16 +47,17 @@ export default function Dashboard() {
             </select>
           </div>
         </div>
-        <div>
+       
+      </DashboardFilterArea>
+
+      <CardsArea>
+      <div>
           
           <InputWithIcon
             placeholder="Insira um produto"
             right={{ src: SearchIcon }}
           />
         </div>
-      </DashboardFilterArea>
-
-      <CardsArea>
         <div className="cards">
           <div className="cardRow">
             <Card
