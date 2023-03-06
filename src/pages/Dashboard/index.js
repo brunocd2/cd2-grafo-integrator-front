@@ -26,7 +26,7 @@ export default function Dashboard() {
     <DashboardWrapper>
       <DashboardHeader>
         <div>
-          <h1>Olá, {user.name}</h1>
+          <h2>Olá, {user.name}</h2>
           <small>Bem vindo(a) de volta!</small>
         </div>
         <img src={user.avatar} alt={user.name} />
@@ -48,8 +48,7 @@ export default function Dashboard() {
           </div>
         </div>
         <div>
-          <label>Filtrar por Produto: </label>
-
+          
           <InputWithIcon
             placeholder="Insira um produto"
             right={{ src: SearchIcon }}

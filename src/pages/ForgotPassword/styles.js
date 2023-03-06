@@ -19,7 +19,7 @@ export const ForgotPasswordContainer = styled.main`
 
   h2 {
     font-weight: 500;
-    font-size: 28px;
+    font-size: 22px;
     margin-bottom: 1.5rem;
     color: var(--black2);
 
@@ -38,7 +38,7 @@ export const ForgotPasswordContainer = styled.main`
     margin-bottom: 2rem;
 
     @media (max-width: 400px) {
-      font-size: 18px;
+      font-size: 13px;
     }
   }
 
