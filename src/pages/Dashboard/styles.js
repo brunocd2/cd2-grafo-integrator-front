@@ -217,7 +217,7 @@ export const PieChartLegendValue = styled.div`
 
   span:first-child {
     color: ${props => props.color};
-    font-size: 18px;
+    font-size: 13px;
     font-weight: 500;
   }
 
@@ -255,7 +255,7 @@ export const MetricProducts = styled.section`
     }
 
     td {
-      font-size: 18px;
+      font-size: 13px;
       color: var(--black2);
       padding-top: 0.8rem;       
     }

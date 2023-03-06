@@ -38,7 +38,7 @@ export const ForgotPasswordContainer = styled.main`
     margin-bottom: 2rem;
 
     @media (max-width: 400px) {
-      font-size: 18px;
+      font-size: 13px;
     }
   }
 

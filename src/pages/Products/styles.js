@@ -27,7 +27,7 @@ export const FilterArea = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 18px;
+    font-size: 13px;
     color: var(--gray3);
     
     div {
@@ -70,7 +70,7 @@ export const ShowPerPageArea = styled.div`
   }
   
   label {
-    font-size: 18px;
+    font-size: 13px;
     font-weight: 400;
     color: var(--gray3);
     
@@ -85,7 +85,7 @@ export const ShowPerPageArea = styled.div`
     background-color: #EAECF4;
     border: 1px solid var(--gray1);
     padding: 8px;
-    font-size: 18px;
+    font-size: 13px;
     margin: 0 1rem;
     border-radius: 4px;
     font-weight: 600;

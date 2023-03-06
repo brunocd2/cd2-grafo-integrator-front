@@ -69,7 +69,7 @@ export const MenuWrapper = styled.aside`
       h2 {
         margin-left: 1rem;
         font-weight: 600;
-        font-size: 18px;
+        font-size: 13px;
       }
 
       span {

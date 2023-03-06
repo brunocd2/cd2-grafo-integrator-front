@@ -27,7 +27,7 @@ export const Notification = styled.span`
   width: 100%;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
-  font-size: 18px;
+  font-size: 13px;
   font-family: 'Poppins';
   font-weight: 600;
   color: var(--black);
@@ -100,7 +100,7 @@ export const SelectedNotification = styled(NoSelectedNotification)`
   h1 {
     color: var(--black);
     text-align: center;
-    font-size: 18px;
+    font-size: 13px;
     max-width: 300px;
   }
 
