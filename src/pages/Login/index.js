@@ -45,7 +45,7 @@ export default function Login() {
           setIsLoading(false);
           setProducts(products);
 
-          const isFirstAccess = true;
+          const isFirstAccess = false; // true
 
           isFirstAccess
             ? navigate('/primeiro-acesso')
