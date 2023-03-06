@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginLeftWrapper, LoginRightWrapper } from "./styles";
 
@@ -17,38 +17,52 @@ import Loading from "../../components/Loading";
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { setProducts } = useContext(GlobalContext);
+  const { setProducts, setSession } = useContext(GlobalContext);
   const navigate = useNavigate();
 
   function handleChangeVisibility() {
     setShowPassword(!showPassword);
   }
 
-  
   function handleSubmit(e) {
     e.preventDefault();
 
-    setIsLoading(true);
+    if (!email || !password) {
+      setError('Preencha os campos corretamente');
+    } else {
+      setIsLoading(true);
 
-    //--- Waiting login access to test ---\\
+      login({
+        email,
+        password
+      }).then((isFirstAccess) => {
+        setSession({ email, password });
 
-    login({
-      email,
-      password
-    }).then(success => {
-    getAllProducts().then(products => {
-      setIsLoading(false);
-      setProducts(products);
-      navigate('/dashboard');
-    });
-    }).catch(error => {
-      alert('Falha ao logar, verifique as credenciais!');
-      setIsLoading(false);
-      console.log(error);
-    });
+        getAllProducts().then(products => {
+          setIsLoading(false);
+          setProducts(products);
+
+          const isFirstAccess = true;
+
+          isFirstAccess
+            ? navigate('/primeiro-acesso')
+            : navigate('/dashboard');
+        });
+      }).catch(error => {
+        setError('Verifique as credenciais!');
+        setIsLoading(false);
+
+        console.log(error);
+      });
+    }
   }
+
+  useEffect(() => {
+    setError('');
+  }, [email, password])
 
   return (
     <>
@@ -56,15 +70,20 @@ export default function Login() {
         <img src={Logo} alt="domazzi" />
         <h2>Bem vindo(a) ao <br /> Portal Domazzi.</h2>
       </LoginLeftWrapper>
+
       <LoginRightWrapper>
         <img src={LogoMobile} alt="domazzi" />
+
         <h2>Insira os dados para <br /> acessar a aplicação.</h2>
+
         <form onSubmit={handleSubmit}>
           <InputWithIcon
             label="E-mail" placeholder="Insira seu e-mail"
+            type="email"
             value={email} setValue={setEmail}
             left={{ src: MailIcon }}
           />
+
           <InputWithIcon
             label="Senha" placeholder="Insira sua senha"
             value={password} setValue={setPassword}
@@ -76,7 +95,10 @@ export default function Login() {
             type={showPassword ? 'text' : 'password'}
           />
 
+          {error && <span className="error">{error}</span>}
+
           <Link to="/nova-senha">Esqueceu a senha?</Link>
+
           <Button color="branding" text="Acessar" />
         </form>
 

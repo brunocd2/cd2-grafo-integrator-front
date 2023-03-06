@@ -69,6 +69,14 @@ export const LoginRightWrapper = styled.main`
     }
   }
 
+  p {
+    font-size: 24px;
+    font-family: Inter, sans-serif;
+    color: var(--gray3);
+    margin-bottom: 2.5rem;
+    margin-top: -2.5rem;
+  }
+
   form {
     display: flex;
     flex-direction: column;
