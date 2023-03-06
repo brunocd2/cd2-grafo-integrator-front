@@ -22,7 +22,7 @@ export default function PieChart({}) {
     colors: ["#784EDE", "#00ADDD", "#4E73DF"],
     legend: 'none',
     pieSliceTextStyle: {
-      fontSize: 18,
+      fontSize: 12,
     },
     pieSliceText: 'value',
     chartArea: {

@@ -60,6 +60,21 @@ export default function Dashboard() {
             right={{ src: SearchIcon }}
           />
         </div>
+
+        <ChartsRow>
+        <BarCharts />
+      </ChartsRow>
+      <PieChart />
+
+      <div className="cardRow" >
+
+<Card
+    title="Clientes Importados"
+    value="4 clientes" gains={-50}
+    detail="8 clientes - último mês"
+  />
+</div>
+
           <div className="cardRow">
             <Card
               title="Total Geral de Produtos Importados"
@@ -83,14 +98,7 @@ export default function Dashboard() {
               detail="8 clientes - último mês"
             />
           </div>
-          <div className="cardRow" >
-
-          <Card
-              title="Clientes Importados"
-              value="4 clientes" gains={-50}
-              detail="8 clientes - último mês"
-            />
-          </div>
+         
           <DefaultDashboardContainer title="Resumo do Produto">
           <h3>Coca Cola 2L</h3>
           <ul>
@@ -116,16 +124,13 @@ export default function Dashboard() {
             <li>Preço Saída: R$15,57</li>
           </ul>
         </DefaultDashboardContainer>
-        <PieChart />
 
         </div>
 
       
       </CardsArea>
 
-      <ChartsRow>
-        <BarCharts />
-      </ChartsRow>
+      
 
       <MetricProducts>
         <h2>Métricas do Produto</h2>
