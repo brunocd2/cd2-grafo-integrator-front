@@ -60,7 +60,7 @@ export const ForgotPasswordContainer = styled.main`
     }
 
     a {
-      font-size: 1rem;
+      font-size: 14px;
       color: var(--gray3);
       font-family: Poppins, sans-serif;
       text-decoration: none;

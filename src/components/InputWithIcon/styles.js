@@ -34,7 +34,7 @@ export const InputWithIconWrapper = styled.div`
       border-radius: 4px;
       font-family: 'Inter', sans-serif;
       font-weight: 500;
-      font-size: 1rem;
+      font-size: 14px;
       margin-left: 15px;
       width: 100%;
 

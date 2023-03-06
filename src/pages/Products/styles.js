@@ -50,7 +50,7 @@ export const FilterButton = styled(Button)`
   border-radius: 4px;
   margin-right: 12px;
   padding-right: 15px;
-  font-size: 1rem;
+  font-size: 14px;
   img {
     margin: 0 12px;
   }
@@ -75,7 +75,7 @@ export const ShowPerPageArea = styled.div`
     color: var(--gray3);
     
     @media (max-width: 800px) {
-      font-size: 1rem;
+      font-size: 14px;
     }
   }
 
@@ -92,7 +92,7 @@ export const ShowPerPageArea = styled.div`
     color: var(--gray3);
 
     @media (max-width: 800px) {
-      font-size: 1rem;
+      font-size: 14px;
       height: auto;
     }
   }

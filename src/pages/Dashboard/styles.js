@@ -91,7 +91,7 @@ export const CardsArea = styled.section`
       flex: 1;
 
       h3 {
-        font-size: 1rem;
+        font-size: 14px;
         margin-bottom: 1rem;
       }
 
