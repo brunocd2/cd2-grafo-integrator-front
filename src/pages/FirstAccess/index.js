@@ -45,11 +45,11 @@ export default function FirstAccess() {
   return (
     <>
       <LoginLeftWrapper>
-        <img src={Logo} alt="domazzi"/>
-        <h2>Bem vindo(a) ao <br /> Portal Domazzi.</h2>
+        <img src={Logo} alt="CD2 Grafo Integrator"/>
+        <h2>Bem vindo(a) ao <br /> Portal Analytics.</h2>
       </LoginLeftWrapper>
       <LoginRightWrapper>
-        <img src={LogoMobile} alt="domazzi" />
+        <img src={LogoMobile} alt="CD2 Grafo Integrator" />
         <h2>Este é seu primeiro <br/> acesso na aplicação.</h2>
         <p>Crie uma nova senha para entrar.</p>
         <form onSubmit={handleSubmit}>

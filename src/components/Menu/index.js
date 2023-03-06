@@ -61,7 +61,7 @@ export default function Menu({ hideRoutes }) {
           <button className="close" onClick={() => setShowFullScreenMenu(false)}>
             X
           </button>
-          <img src={Logo} alt="domazzi" />
+          <img src={Logo} alt="cd" />
           <span className="divider" />
           <nav>
             <div>
