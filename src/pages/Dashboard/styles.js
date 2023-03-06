@@ -98,7 +98,7 @@ export const CardsArea = styled.section`
       span {
         display: flex;
         align-items: center;
-        font-size: 28px;
+        font-size: 22px;
         color: var(--branding);
         font-weight: bold;
         margin-bottom: 4px;

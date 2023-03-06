@@ -16,7 +16,7 @@ export const LoginLeftWrapper = styled.div`
   h2 {
     margin-top: 104px;
     text-align: center;
-    font-size: 28px;
+    font-size: 22px;
   }
 
   @media (max-width: 1000px) {
@@ -61,7 +61,7 @@ export const LoginRightWrapper = styled.main`
 
   h2 {
     font-weight: 500;
-    font-size: 28px;
+    font-size: 22px;
     margin-bottom: 4.5rem;
   
     @media (max-width: 700px) {

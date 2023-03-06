@@ -48,8 +48,7 @@ export default function Dashboard() {
           </div>
         </div>
         <div>
-          <label>Filtrar por Produto: </label>
-
+          
           <InputWithIcon
             placeholder="Insira um produto"
             right={{ src: SearchIcon }}

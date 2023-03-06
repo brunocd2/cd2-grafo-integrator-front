@@ -138,7 +138,7 @@ export const NoNotifications = styled.section`
   align-items: center;
 
   h1 {
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 600;
     text-align: center;
     color: var(--gray3)

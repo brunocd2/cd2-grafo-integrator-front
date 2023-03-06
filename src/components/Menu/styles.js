@@ -79,6 +79,7 @@ export const MenuWrapper = styled.aside`
         padding: 2px 0;
         padding-left: 20px;
         flex: 1;
+        font-size:12px;
         cursor: pointer;
         border-radius: 0px 4px 4px 0px;
         position: relative;
@@ -129,6 +130,7 @@ export const MenuWrapper = styled.aside`
           margin: 10px 0;
           margin-right: 2rem;
           width: auto;
+          font-size:12px;
           
           &.fullWidth {
             width: 100%;
