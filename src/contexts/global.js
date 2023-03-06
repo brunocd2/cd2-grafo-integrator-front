@@ -4,7 +4,7 @@ export const GlobalContext = createContext({});
 
 export default function GlobalProvider({ children }) {
   const [user, setUser] = useState({
-    name: "John Doe", avatar: "https://www.w3schools.com/howto/img_avatar.png"
+    name: "Domazzi", avatar: "https://www.w3schools.com/howto/img_avatar.png"
   });
   const [notifications, setNotifications] = useState([
     {title: 'Um novo relatório mensal está pronto para download!', description: 'O relatório mensal de Operações está pronto para visualização e Download. Verifique todos os dados presentes no relatório.', type: 'description', date: '06/02/2023',
