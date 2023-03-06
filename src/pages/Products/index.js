@@ -10,6 +10,7 @@ import Table from "../../components/Table";
 import Pagination from "./Pagination";
 import Modal from "../../components/Modal";
 import { GlobalContext } from "../../contexts/global";
+import { useParams } from "react-router-dom";
 
 export default function Products() {
   const [modalOpened, setModalOpened] = useState(false);
@@ -18,6 +19,8 @@ export default function Products() {
   const [search, setSearch] = useState('');
   const [body, setBody] = useState([]);
   const { products } = useContext(GlobalContext);
+  const { filterType, filter } = useParams();
+  const title = filterType ? `Produtos - ${filterType}: ${filter}` : 'Produtos Cadastrados'
   
   // const database = [
     //   ['1','1000 - 21465 - BARRA DE CHOCOLATE BELGA AO LEITE ACONDICIONADO EM CAIXAS CONTENDO 12 UNIDADES DE 100GR CADA CACHET KIMS CHOCOLATE','25412956214650','574512','CHOC BARRA AO LEITE CACHET 100g','Kims Chocolates','Chocolate', '0', '0', 'Hippo', '0', '0', '0', '0', '0', '0', '0'],
@@ -113,8 +116,22 @@ export default function Products() {
     )
   }, [data]);
 
+  useEffect(() => {
+    if(filterType) {
+      const label = filterType.charAt(0).toUpperCase() + filterType.slice(1);
+
+      setSelectedFilters([
+        {label, value: filter, inTable: filterType}
+      ]);
+
+      handleFilter();
+    } else {
+      setSelectedFilters([]);
+    }
+  }, [filterType]);
+
   return (
-    <PageContainer title="Produtos Cadastrados">
+    <PageContainer title={title}>
       <Modal opened={modalOpened} setOpened={setModalOpened}>
         <ModalContent>
           <header>
@@ -190,7 +207,7 @@ export default function Products() {
 
       <ShowPerPageArea>
         <label>Mostrar</label>
-        <input type="number" value={showPerPage} onChange={handleSetShowPerPage}  inputMode="numeric" pattern="\d*" />
+        <input type="number" value={showPerPage} onChange={handleSetShowPerPage}  inputMode="numeric" pattern="\d*" min={0}/>
         <label>Produtos por página</label>
       </ShowPerPageArea>
 

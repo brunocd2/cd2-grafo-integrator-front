@@ -160,6 +160,10 @@ export const PaginationArea = styled.footer`
 export const ModalContent = styled.div`
   width: 580px;
 
+  @media (max-width: 580px) {
+    width: 100vw
+  }
+
   header {
     padding: 1rem;
     border-bottom: 1px solid #ccc;
@@ -189,6 +193,10 @@ export const ModalContent = styled.div`
       font-size: 14px;
       min-width: 50%;
       margin-bottom: 10px;
+
+      @media (max-width: 580px) {
+        width: 100%;
+      }
     }
 
     input {
@@ -205,6 +213,10 @@ export const ModalContent = styled.div`
       padding: 4px 8px;
       width: 115px;
       height: 24px;
+
+      @media (max-width: 580px) {
+        margin-right: 0;
+      }
     }
   }
 `
