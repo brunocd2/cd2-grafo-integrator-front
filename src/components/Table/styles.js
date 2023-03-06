@@ -22,7 +22,7 @@ export const TableWrapper = styled.div`
   th {
     color: var(--white);
     background-color: var(--branding);
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 700;
     font-family: 'Poppins', sans-serif;
     padding: 1.5rem 0;
@@ -46,7 +46,7 @@ export const TableWrapper = styled.div`
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: 14px;
+    font-size: 10px;
     font-family: 'Poppins', sans-serif;
     padding: 2px;
     border-left: 1px solid #C9C9C9;

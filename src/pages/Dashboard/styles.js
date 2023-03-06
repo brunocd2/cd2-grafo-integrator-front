@@ -21,7 +21,7 @@ export const DashboardHeader = styled.header`
 
   small {
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 600;
     color: var(--gray3);
   }
@@ -46,7 +46,7 @@ export const DashboardFilterArea = styled.div`
     }
 
     > label {
-      font-size: 14px;
+      font-size: 10px;
       margin-right: 12px;
       color: var(--black2);
       margin-right: 0;
@@ -153,7 +153,7 @@ export const DefaultDashboardWrapper = styled.section`
 
     h3 {
       font-weight: 500;
-      font-size: 14px;
+      font-size: 10px;
       margin-right: auto;
       color: var(--branding);
     }
@@ -172,7 +172,7 @@ export const DefaultDashboardWrapper = styled.section`
     h3 {
       font-family: 'Inter';
       font-weight: 500;
-      font-size: 14px;
+      font-size: 10px;
       text-align: center;
       margin: 1rem 0;
     }
@@ -186,7 +186,7 @@ export const DefaultDashboardWrapper = styled.section`
     }
     li {
       font-family: "Inter";
-      font-size: 14px;
+      font-size: 10px;
       font-weight: 500;
     }
   }
@@ -250,7 +250,7 @@ export const MetricProducts = styled.section`
     
     th {
       color: var(--gray3);
-      font-size: 14px;
+      font-size: 10px;
       text-align: start;
     }
 

@@ -103,7 +103,7 @@ export const PaginationArea = styled.footer`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 14px;
+  font-size: 10px;
   font-family: 'Poppins', sans-serif;
 
   @media (max-width: 600px) {
@@ -176,7 +176,7 @@ export const ModalContent = styled.div`
   }
 
   > label {
-    font-size: 14px;
+    font-size: 10px;
     color: var(--gray3);
     margin: 1rem;
 
@@ -190,7 +190,7 @@ export const ModalContent = styled.div`
     label {
       display: flex;
       font-weight: 400;
-      font-size: 14px;
+      font-size: 10px;
       min-width: 50%;
       margin-bottom: 10px;
 

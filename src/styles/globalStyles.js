@@ -39,7 +39,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   select {
-    font-size: 14px;
+    font-size: 10px;
     font-family: 'Inter';
     color: var(--black2);
     background-color: var(--white);
