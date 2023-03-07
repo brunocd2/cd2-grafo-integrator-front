@@ -13,6 +13,7 @@ export const DashboardHeader = styled.header`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-top: 10%;
 
   h1 {
     font-size: 24px;
