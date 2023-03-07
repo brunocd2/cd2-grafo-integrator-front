@@ -25,7 +25,7 @@ export default function Dashboard() {
   return (
     
     <DashboardWrapper>
-
+         
       <DashboardHeader >
         <div>
           <h2>Olá, {user.name}</h2>
