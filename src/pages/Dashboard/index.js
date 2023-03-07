@@ -23,9 +23,11 @@ export default function Dashboard() {
   ];
 
   return (
-    <PageContainer >
- <DashboardWrapper>
-      <DashboardHeader>
+    
+    <DashboardWrapper>
+          <PageContainer>
+        </PageContainer>
+      <DashboardHeader >
         <div>
           <h2>Olá, {user.name}</h2>
           <small>Bem vindo(a) de volta!</small>
@@ -157,7 +159,5 @@ export default function Dashboard() {
         </table>
       </MetricProducts>
     </DashboardWrapper>
-    </PageContainer>
-   
   )
 }
