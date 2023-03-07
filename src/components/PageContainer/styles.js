@@ -22,9 +22,9 @@ export const PageWrapper = styled.section`
     border-radius: 12px 12px 0px 0px;
     
     h1 {
-      font-weight: 600;
+      font-weight: 500;
       font-size: 20px;
-      color: var(--branding);
+      color: #ffffff;
       text-transform: capitalize;
     }
   }
