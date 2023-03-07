@@ -25,8 +25,9 @@ export default function Dashboard() {
   return (
     
     <DashboardWrapper>
-          <PageContainer title={"ddsfsdfsdfsdf"}>
-        </PageContainer>
+          <div>
+            teste
+          </div>
       <DashboardHeader >
         <div>
           <h2>Olá, {user.name}</h2>
