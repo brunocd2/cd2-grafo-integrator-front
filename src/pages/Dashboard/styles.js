@@ -177,6 +177,7 @@ export const DefaultDashboardWrapper = styled.section`
 
     select {
       margin-bottom: 0.5rem;
+      width:80%
     }
 
     span {

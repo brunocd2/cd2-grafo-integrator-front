@@ -146,7 +146,8 @@ export default function Dashboard() {
                 {tr.map((td, tdIndex) =>
                   <React.Fragment key={tdIndex}>
                     <td>{td}</td>
-                    {tdIndex === 0 && <td className="divider"></td>}
+                    {tdIndex === 0 }
+                    
                   </React.Fragment>
                 )}
               </tr>
