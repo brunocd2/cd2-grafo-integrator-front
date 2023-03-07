@@ -12,8 +12,10 @@ export const DashboardWrapper = styled.main`
 export const DashboardHeader = styled.header`
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  margin-top: 10%;
+  background-color: #4e73df;
+  margin-top: -23%;
+  margin-left: -7%;
+  width: 114%;
 
   h1 {
     font-size: 24px;
