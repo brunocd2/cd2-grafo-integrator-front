@@ -17,7 +17,7 @@ export const PageWrapper = styled.section`
   }
 
   header {
-    background-color: var(--box-bg);
+    background-color: #4e73df;
     padding: 15px 24px;
     border-radius: 12px 12px 0px 0px;
     
