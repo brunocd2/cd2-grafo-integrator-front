@@ -25,7 +25,7 @@ export default function Dashboard() {
   return (
     
     <DashboardWrapper>
-          <PageContainer>
+          <PageContainer title={"ddsfsdfsdfsdf"}>
         </PageContainer>
       <DashboardHeader >
         <div>
