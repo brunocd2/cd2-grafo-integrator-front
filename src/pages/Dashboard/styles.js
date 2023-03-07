@@ -137,7 +137,6 @@ export const DefaultDashboardWrapper = styled.section`
   border: 1px solid #E7E8F2;
   border-radius: 6px;
   margin-bottom: 20px;
-  min-width: 350px;
   flex: ${props => props.isBarChart ? 1 : '0'};
   
   select.chart {
