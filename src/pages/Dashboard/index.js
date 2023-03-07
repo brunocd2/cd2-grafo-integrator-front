@@ -25,9 +25,14 @@ export default function Dashboard() {
   return (
     
     <DashboardWrapper>
-          <div>
-            teste
-          </div>
+         <div className="cardRow" >
+
+<Card
+    title="Clientes Importados"
+    value="4 clientes" gains={-50}
+    detail="8 clientes - último mês"
+  />
+</div>
       <DashboardHeader >
         <div>
           <h2>Olá, {user.name}</h2>
