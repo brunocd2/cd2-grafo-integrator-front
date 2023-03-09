@@ -38,7 +38,6 @@ export const LoginLeftWrapper = styled.div`
   @media (max-width: 700px) {
     display: none;
   }
-
 `
 
 export const LoginRightWrapper = styled.main`
@@ -54,17 +53,18 @@ export const LoginRightWrapper = styled.main`
   > img {
     width: 15rem;
     margin-bottom: 2.5rem;
+
     @media (min-width: 700px) {
       display: none;
     }
   }
 
   h2 {
-    font-weight: 500;
     font-size: 22px;
-    margin-bottom: 4.5rem;
+    font-weight: 500;
     text-align: center;
-  
+    margin-bottom: 4.5rem;
+
     @media (max-width: 700px) {
       margin-bottom: 2.5rem;
     }
@@ -101,5 +101,4 @@ export const LoginRightWrapper = styled.main`
       margin-top: 2rem;
     }
   }
-
 `

@@ -162,27 +162,35 @@ export default function Menu({ hideRoutes }) {
             </div>
             <div>
               <h2>Configurações</h2>
+
               <span onClick={() => handleClickSubMenu('configurations')}>
                 <img src={SettingsIcon} alt="" />
+
                 Configurações
+
                 <img
                   className="rightIcon" alt=""
                   src={activeSubMenu === 'products' ? ArrowUpIcon : ArrowDownIcon}
                 />
               </span>
+
               {activeSubMenu === 'configurations' &&
                 <div className="subMenuContent">
+                  <span onClick={() => handleNavigate('/usuarios')}
+                    className={location.pathname === '/usuarios' ? 'active' : ''}
+                  >
+                    Cadastrar Usuário
+                  </span>
+
                   <span
                     onClick={() => handleNavigate('/produtos-cadastrados')}
                   // className={location.pathname === '/produtos-cadastrados' ? 'active' : ''}
                   >
-                    Cadastrar usuário
-                  </span>
-                  <span onClick={() => handleNavigate('/produtos-cadastrados')}>
                     Configurações
                   </span>
                 </div>
               }
+
               <span onClick={() => handleNavigate('/')}>
                 <img src={LogoutIcon} alt="" />
                 Sair da aplicação

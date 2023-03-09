@@ -34,3 +34,8 @@ export async function firstAccess(userInfos, newPassword) {
 
   console.log(response.data.data);
 }
+
+export async function newUser(userInfos) {
+  const response = await axios.post('/', userInfos);
+  console.log(response);
+}
