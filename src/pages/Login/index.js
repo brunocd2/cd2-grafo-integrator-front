@@ -84,24 +84,27 @@ export default function Login() {
     <>
       <LoginLeftWrapper>
         <img src={Logo} alt="domazzi" />
-        <h2>Bem vindo(a) ao <br /> Portal Domazzi.</h2>
+        <h2>Bem vindo(a) ao <br /> Portal Analytics.</h2>
       </LoginLeftWrapper>
 
       <LoginRightWrapper>
         <img src={LogoMobile} alt="domazzi" />
 
-        <h2>Insira os dados para <br /> acessar a aplicação.</h2>
 
+        <center><h3>Agregando valor ao seu negócio  <br /> através de análise de dados de ponta.</h3>
+        </center>
+        <p></p>
+        <br></br>
         <form onSubmit={handleSubmit}>
           <InputWithIcon
-            label="E-mail" placeholder="Insira seu e-mail"
+            placeholder="Insira seu e-mail"
             type="email"
             value={email} setValue={setEmail}
             left={{ src: MailIcon }}
           />
 
           <InputWithIcon
-            label="Senha" placeholder="Insira sua senha"
+            placeholder="Insira sua senha"
             value={password} setValue={setPassword}
             left={{ src: LockIcon, }}
             right={{
@@ -113,8 +116,8 @@ export default function Login() {
 
           {error && <span className="error">{error}</span>}
 
-          <Link to="/nova-senha">Esqueceu a senha?</Link>
-
+          <center><Link to="/nova-senha">Esqueceu a senha?</Link>
+          </center>
           <Button color="branding" text="Acessar" />
         </form>
 
