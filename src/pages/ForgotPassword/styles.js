@@ -6,11 +6,11 @@ export const ForgotPasswordContainer = styled.main`
   justify-content: center;
   flex-direction: column;
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
 
   > img {
-    width: 278px;
-    margin-bottom: 2.5rem;
+    width: 200px;
+    margin-bottom: 2rem;
 
     @media (max-width: 400px) {
       width: 15rem;
@@ -22,15 +22,11 @@ export const ForgotPasswordContainer = styled.main`
     font-size: 22px;
     margin-bottom: 1.5rem;
     color: var(--black2);
-
-    /* @media (max-width: 400px) {
-      font-size: 20px;
-    } */
   }
 
   p {
     font-family: Inter, 'sans-serif';
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 500;
     max-width: 416px;
     text-align: center;
