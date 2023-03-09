@@ -18,13 +18,13 @@ export default function Products() {
   const [offset, setOffset] = useState(0);
   const [search, setSearch] = useState('');
   const [body, setBody] = useState([]);
-  const { products } = useContext(GlobalContext);
+  const { products, setProducts, filteredProducts } = useContext(GlobalContext);
   const { filterType, filter } = useParams();
   const title = filterType ? `Produtos - ${filterType}: ${filter}` : 'Produtos Cadastrados'
-  
+
   // const database = [
-    //   ['1','1000 - 21465 - BARRA DE CHOCOLATE BELGA AO LEITE ACONDICIONADO EM CAIXAS CONTENDO 12 UNIDADES DE 100GR CADA CACHET KIMS CHOCOLATE','25412956214650','574512','CHOC BARRA AO LEITE CACHET 100g','Kims Chocolates','Chocolate', '0', '0', 'Hippo', '0', '0', '0', '0', '0', '0', '0'],
-    //   ['2','1001 - 21464 - BARRA DE CHOCOLATE SUIÇA 85% CACAU ACONDICIONADO EM CAIXAS CONTENDO 12 UNIDADES DE 100GR CADA CACHET KIMS CHOCOLATE','25412956214643','618961','CHOC BARRA 85 CACAU CACHET 100g', 'Kims Chocolates', 'Chocolates', '0', '0', 'Zaffari', '0', '0', '0', '0', '0', '0', '0'],
+  //   ['1','1000 - 21465 - BARRA DE CHOCOLATE BELGA AO LEITE ACONDICIONADO EM CAIXAS CONTENDO 12 UNIDADES DE 100GR CADA CACHET KIMS CHOCOLATE','25412956214650','574512','CHOC BARRA AO LEITE CACHET 100g','Kims Chocolates','Chocolate', '0', '0', 'Hippo', '0', '0', '0', '0', '0', '0', '0'],
+  //   ['2','1001 - 21464 - BARRA DE CHOCOLATE SUIÇA 85% CACAU ACONDICIONADO EM CAIXAS CONTENDO 12 UNIDADES DE 100GR CADA CACHET KIMS CHOCOLATE','25412956214643','618961','CHOC BARRA 85 CACAU CACHET 100g', 'Kims Chocolates', 'Chocolates', '0', '0', 'Zaffari', '0', '0', '0', '0', '0', '0', '0'],
   //   ['3','1002 - 21465 - BARRA DE CHOCOLATE BELGA AO LEITE ACONDICIONADO EM CAIXAS CONTENDO 12 UNIDADES DE 100GR CADA CACHET KIMS CHOCOLATE','25412956214650','574512','CHOC BARRA AO LEITE CACHET 100g','Domazzi Chocolates','Chocolate', '0', '0', 'Super Pão', '0', '0', '0', '0', '0', '0', '0'],
   //   ['4','1002 - 21465 - BARRA DE CHOCOLATE BELGA AO LEITE ACONDICIONADO EM CAIXAS CONTENDO 12 UNIDADES DE 100GR CADA CACHET KIMS CHOCOLATE','25412956214650','574512','CHOC BARRA AO LEITE CACHET 100g','Kims Chocolates','Chocolate', '0', '0', 'Hippo', '0', '0', '0', '0', '0', '0', '0'],
   //   ['5','1002 - 21465 - BARRA DE CHOCOLATE BELGA AO LEITE ACONDICIONADO EM CAIXAS CONTENDO 12 UNIDADES DE 100GR CADA CACHET KIMS CHOCOLATE','25412956214650','574512','CHOC BARRA AO LEITE CACHET 100g','Kims Chocolates','Chocolate', '0', '0', 'Zaffari', '0', '0', '0', '0', '0', '0', '0'],
@@ -44,39 +44,41 @@ export default function Products() {
     Object.keys(products[0]).map(key => key)
   );
 
-  const database = products.map(product => {
-    const row = Object.keys(product).map(key => product[key]);
-    return row;
-  })
+  const [database, setDatabase] = useState(() =>
+    products.map(product => {
+      const row = Object.keys(product).map(key => product[key]);
+      return row;
+    })
+  )
 
   const [data, setData] = useState(database);
 
   const filters = [
     // {label: 'Produto', inTable: 'Descrição Domazzi'},
-    {label: 'Produto', inTable: 'codigo_acesso_principal'},
-    {label: 'Exportador', inTable: 'exportador'},
-    {label: 'Parceiro', inTable: 'parceiro'},
-    {label: 'Categoria', inTable: 'categoria'},
+    { label: 'Produto', inTable: 'codigo_acesso_principal' },
+    { label: 'Exportador', inTable: 'exportador' },
+    { label: 'Parceiro', inTable: 'parceiro' },
+    { label: 'Categoria', inTable: 'categoria' },
     // {label: 'Ref.Parceiro', inTable: 'Referência Parceiro'},
-    {label: 'Ref.Domazzi', inTable: 'referencia_domazzi'},
-    {label: 'Desc.Parceiro', inTable: 'descricao_produto'},
+    { label: 'Ref.Domazzi', inTable: 'referencia_domazzi' },
+    { label: 'Desc.Parceiro', inTable: 'descricao_produto' },
   ];
   const [selectedFilters, setSelectedFilters] = useState([]);
 
   function handleSetShowPerPage(e) {
-    e.target.value 
+    e.target.value
       ? setShowPerPage(e.target.value)
       : setShowPerPage(10)
   }
 
   function handleFilter() {
-    let newData = [...database];
+    let newData = [...products];
 
     selectedFilters.forEach((filter, filterIndex) => {
-      if(filter.value) {
+      if (filter.value) {
         const index = header.findIndex(element => element === filter.inTable);
 
-        if(filterIndex === 0) {
+        if (filterIndex === 0) {
           newData = database.filter(row => {
             return row[index].toUpperCase().includes(filter.value.toUpperCase());
           });
@@ -87,14 +89,14 @@ export default function Products() {
         }
       }
     })
+
     setOffset(0);
     setData(newData);
-
     setModalOpened(false);
   }
 
   function handleSearch() {
-    if(search) {
+    if (search) {
       let newData = database.filter(row => {
         return row[2].toUpperCase().includes(search.toUpperCase());
       });
@@ -104,9 +106,9 @@ export default function Products() {
       setData(database);
     }
   }
-  
+
   useEffect(() => {
-    setBody(() => 
+    setBody(() =>
       data.slice(offset, offset + Number(showPerPage))
     )
   }, [offset, showPerPage]);
@@ -116,20 +118,45 @@ export default function Products() {
   }, [showPerPage]);
 
   useEffect(() => {
-    setBody(() => 
+    setBody(() =>
       data.slice(offset, offset + Number(showPerPage))
     )
   }, [data]);
 
   useEffect(() => {
-    if(filterType) {
+    console.log(filteredProducts);
+
+    filteredProducts.length === 0
+      ? setData(() =>
+        database.map(product => {
+          const row = Object.keys(product).map(key => product[key]);
+          return row;
+        })
+      )
+      : setData(() =>
+        filteredProducts.map(product => {
+          const row = Object.keys(product).map(key => product[key]);
+          return row;
+        })
+      );
+
+  }, [filteredProducts]);
+
+  useEffect(() => {
+    if (filterType) {
+      console.log(filterType);
+
       const label = filterType.charAt(0).toUpperCase() + filterType.slice(1);
 
       setSelectedFilters([
-        {label, value: filter, inTable: filterType}
+        { label, value: filter, inTable: filterType }
       ]);
 
-      handleFilter();
+      setTimeout(() => {
+        console.log(selectedFilters);
+
+        // handleFilter();
+      }, 500);
     } else {
       setSelectedFilters([]);
     }
@@ -144,12 +171,12 @@ export default function Products() {
           </header>
 
           <label>Selecione o filtro:</label>
-          
+
           <div>
             {filters.map(filter => (
               <label key={filter.label}>
-                <input 
-                  type="checkbox" 
+                <input
+                  type="checkbox"
                   defaultChecked={selectedFilters.some(element => element.label === filter.label)}
                   value={filter.label}
                   onChange={() => {
@@ -157,7 +184,7 @@ export default function Products() {
                       let newFilters = [...old];
                       const index = newFilters.findIndex(element => element.label === filter.label);
                       index === -1
-                        ? newFilters.push({...filter, value: ''})
+                        ? newFilters.push({ ...filter, value: '' })
                         : newFilters.splice(index, 1);
                       return newFilters;
                     })
@@ -166,8 +193,8 @@ export default function Products() {
 
                 {filter.label}
                 {selectedFilters.some(element => element.label === filter.label) &&
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     placeholder="Insira a descrição"
                     defaultValue={selectedFilters.find(element => element.label === filter.label).value}
                     onChange={e => {
@@ -183,30 +210,30 @@ export default function Products() {
           </div>
 
           <div>
-            <ModalButton text="Fechar" color="red" onClick={() => setModalOpened(false)}/>
-            <ModalButton text="Aplicar Filtro" color="branding" onClick={handleFilter}/>
+            <ModalButton text="Fechar" color="red" onClick={() => setModalOpened(false)} />
+            <ModalButton text="Aplicar Filtro" color="branding" onClick={handleFilter} />
           </div>
         </ModalContent>
       </Modal>
 
       <FilterArea>
         <div >
-          <FilterButton   color="branding" onClick={() => setModalOpened(true)} >
+          <FilterButton color="branding" onClick={() => setModalOpened(true)} >
             <img src={FilterIcon} alt="" />
-            Filtrar por:        
-          </FilterButton> 
+            Filtrar por:
+          </FilterButton>
 
           <FilterButton color="branding">
             <img src={ExcelIcon} alt="" />
-            Exportar Excel     
-          </FilterButton> 
+            Exportar Excel
+          </FilterButton>
         </div>
 
         <div>
-          <label> 
-            <InputWithIcon 
+          <label>
+            <InputWithIcon
               placeholder="Busque por um título"
-              right={{src: SearchIcon, onClick: () => handleSearch()}}
+              right={{ src: SearchIcon, onClick: () => handleSearch() }}
               value={search}
               onEnter={handleSearch}
               setValue={setSearch}
@@ -218,13 +245,13 @@ export default function Products() {
       <ShowPerPageArea>
         <label>Mostrar</label>
 
-        <input type="number" value={showPerPage} onChange={handleSetShowPerPage}  inputMode="numeric" pattern="\d*" min={0}/>
+        <input type="number" value={showPerPage} onChange={handleSetShowPerPage} inputMode="numeric" pattern="\d*" min={0} />
         <label>Produtos por página</label>
       </ShowPerPageArea>
 
-      <Table header={header} body={body}/>
+      <Table header={header} body={body} />
 
-      <Pagination limit={showPerPage} total={data.length} offset={offset} setOffset={setOffset} showPerPage={showPerPage}/>
+      <Pagination limit={showPerPage} total={data.length} offset={offset} setOffset={setOffset} showPerPage={showPerPage} />
     </PageContainer>
   )
 }

@@ -23,7 +23,7 @@ export default function Menu({ hideRoutes }) {
   const [activeSubMenu, setActiveSubMenu] = useState(null);
   const [activeInsideSubMenu, setActiveInsideSubMenu] = useState(null);
   const [showFullScreenMenu, setShowFullScreenMenu] = useState(false);
-  const { notifications, categories, partners, setProducts } = useContext(GlobalContext);
+  const { notifications, categories, partners, setProducts, setFilteredProducts, products } = useContext(GlobalContext);
 
   function handleClickSubMenu(subMenu) {
     subMenu === activeSubMenu
@@ -39,15 +39,22 @@ export default function Menu({ hideRoutes }) {
 
   function handleNavigate(route, filterType, filter) {
     if (filterType) {
-      filterType === 'categoria'
-        && getProductsByCategory(filter).then(products => setProducts(products));
-      filterType === 'parceiro'
-        && getProductsByPartner(filter).then(products => setProducts(products));
+      setFilteredProducts(() => products.filter(el => el[filterType] === filter));
+
+      if (filterType === 'categoria') {
+        getProductsByCategory(filter).then(products => setFilteredProducts(products));
+      }
+      if (filterType === 'parceiro') {
+        getProductsByPartner(filter).then(products => setFilteredProducts(products));
+      }
+
       navigate(route + `/${filterType}/${filter}`);
     } else {
+      setFilteredProducts([]);
       getAllProducts().then(products => setProducts(products));
       navigate(route);
     }
+
     setShowFullScreenMenu(false);
   }
 
@@ -99,14 +106,14 @@ export default function Menu({ hideRoutes }) {
                   </span>
                   {activeInsideSubMenu === 'categories' &&
                     <div className="subMenuContent insideSubmenu">
-                      {categories.map((category, index) =>
-                        <span key={index}
+                      {categories.map((category, index) => {
+                        return <span key={index}
                           onClick={() => handleNavigate('/produtos-cadastrados', 'categoria', category)}
-                          className={location.pathname === `/produtos-cadastrados/categoria/${category}` ? 'active' : ''}
+                          className={decodeURI(location.pathname) === `/produtos-cadastrados/categoria/${category}` ? 'active' : ''}
                         >
                           {category}
                         </span>
-                      )}
+                      })}
                     </div>
                   }
                   <span onClick={() => handleClickInsideSubMenu('partners')} className="fullWidth">
@@ -123,7 +130,7 @@ export default function Menu({ hideRoutes }) {
                       {partners.map((partner, index) =>
                         <span key={index}
                           onClick={() => handleNavigate('produtos-cadastrados', 'parceiro', partner)}
-                          className={location.pathname.replace('%20', ' ') === `/produtos-cadastrados/parceiro/${partner}` ? 'active' : ''}
+                          className={location.pathname.replace('%20', ' ').replace('%20', ' ') === `/produtos-cadastrados/parceiro/${partner}` ? 'active' : ''}
                         >{partner}</span>
                       )}
                     </div>
