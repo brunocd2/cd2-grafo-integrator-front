@@ -21,14 +21,14 @@ export default function ForgotPassword() {
     if (e) e.preventDefault();
 
     if (!email) {
-      setError('É necessário digitar um email!');
+      setError('Favor, insira um email válido.');
     } else {
       forgotPassword(email).then(() => {
-        toastSuccess("E-mail enviado com sucesso!");
+        toastSuccess("E-mail enviado, favor verifique sua caixa de entrada ou span.");
         setIsLoading(false);
         setEmail('');
       }).catch(err => {
-        setError('Verifique o email digitado!');
+        setError('Problema ao validar email, verifique os dados inseridos e tente novamente.');
         toastError("Erro ao enviar e-mail");
         setIsLoading(false);
 

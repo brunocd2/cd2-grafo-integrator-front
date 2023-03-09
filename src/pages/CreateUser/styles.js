@@ -60,7 +60,7 @@ export const CreateUserWrapper = styled.main`
     }
 
     > button {
-      width: 328px;
+      width: 268px;
       margin-top: 40px;
     }
   }
