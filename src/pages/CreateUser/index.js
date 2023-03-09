@@ -54,7 +54,8 @@ export default function CreateUser() {
             left={{ src: UserIcon }}
             value={name} setValue={setName}
           />
-
+</span>
+<span className="row">
           <InputWithIcon
             placeholder="Insira o sobrenome"
             label="Sobrenome"
