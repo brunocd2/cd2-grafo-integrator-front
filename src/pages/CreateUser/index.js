@@ -43,35 +43,32 @@ export default function CreateUser() {
     <CreateUserWrapper>
       <Toaster position="top-right" reverseOrder={false} />
 
-      <h1>Cadastrar novo usuário</h1>
-      <p>Preencha os campos corretamente</p>
-
+      <h6>Novo Usuário</h6>
+      
       <form onSubmit={handleSubmit}>
         <span className="row">
           <InputWithIcon
-            placeholder="Insira o nome"
-            label="Nome"
+            placeholder="Nome"
+            label="Nome *"
             left={{ src: UserIcon }}
             value={name} setValue={setName}
           />
 </span>
 <span className="row">
           <InputWithIcon
-            placeholder="Insira o sobrenome"
-            label="Sobrenome"
+            placeholder="Sobrenome"
             left={{ src: UsersIcon }}
             value={lastName} setValue={setLastName}
           />
         </span>
 
         <InputWithIcon
-          placeholder="Insira o e-mail"
-          label="E-mail"
+          placeholder="E-mail"
           left={{ src: MailIcon }}
           value={email} setValue={setEmail}
         />
 
-        <h2>Permissões</h2>
+        <h2>Profiles</h2>
 
         <div className="permissions">
           {permissions.map((permission, index) =>
