@@ -94,6 +94,7 @@ export default function Login() {
         <center><h3>Agregando valor ao seu negócio  <br /> através de análise de dados de ponta.</h3>
         </center>
         <p></p>
+        <br></br>
         <form onSubmit={handleSubmit}>
           <InputWithIcon
             placeholder="Insira seu e-mail"

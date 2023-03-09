@@ -12,7 +12,7 @@ import { Toaster } from "react-hot-toast";
 
 export default function CreateUser() {
   const [permissions, setPermissions] = useState([
-    'Administrador',  'Gerente'
+    'Administrador', '', 'Gerente', '', '', ''
   ])
 
   const [name, setName] = useState('');
@@ -42,7 +42,10 @@ export default function CreateUser() {
   return (
     <CreateUserWrapper>
       <Toaster position="top-right" reverseOrder={false} />
+      <br></br>
+      <br></br>
 
+<br></br>
       <h3>Novo Usuário</h3>
       
       <form onSubmit={handleSubmit}>
