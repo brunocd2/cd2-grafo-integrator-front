@@ -13,24 +13,29 @@ export async function getProductsByCategory(category) {
 }
 
 export async function getProductsByPartner(partner) {
-  
   const response = await axios.get(`/domazzi/find_products_by_partner?partner=${partner}`);
   return response.data.data;
 }
 
 export async function login(userInfos) {
-  console.log(userInfos);
   const response = await axios.post('/login', userInfos);
-  console.log(response.data);
+  return response.data.data;
 }
 
 export async function forgotPassword(email) {
-  const response = await axios.post('/forgot', {email});
+  const response = await axios.post('/forgot', { email });
   console.log(response.data);
 }
 
-export async function firstAccess(email, newPassword) {
-  // const response = await axios.post('/update_first_access', {email, newPassword});
-  const response = await axios.post('/update_first_acess', {email, newPassword});
-  console.log(response.data);
+export async function firstAccess(userInfos, newPassword) {
+  const response = await axios.post('/update_first_acess', 
+    {...userInfos, password: newPassword}
+  );
+
+  console.log(response.data.data);
+}
+
+export async function newUser(userInfos) {
+  const response = await axios.post('/', userInfos);
+  console.log(response);
 }

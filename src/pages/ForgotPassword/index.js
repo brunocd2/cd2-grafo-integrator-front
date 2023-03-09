@@ -7,9 +7,15 @@ import MailIcon from '../../assets/icons/mail.png';
 import { Link } from "react-router-dom";
 import { forgotPassword } from "../../services/api";
 
+import { Toaster } from "react-hot-toast";
+import { toastError, toastSuccess } from "../../utils/toast";
+
+import Loading from "../../components/Loading";
+
 export default function ForgotPassword() {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleSubmit(e) {
     if (e) e.preventDefault();
@@ -18,10 +24,15 @@ export default function ForgotPassword() {
       setError('É necessário digitar um email!');
     } else {
       forgotPassword(email).then(() => {
-        alert('Email enviado com sucesso!');
+        toastSuccess("E-mail enviado com sucesso!");
+        setIsLoading(false);
+        setEmail('');
       }).catch(err => {
         setError('Verifique o email digitado!');
-        console.log(err);
+        toastError("Erro ao enviar e-mail");
+        setIsLoading(false);
+
+        // console.log(err);
       })
     }
   }
@@ -32,6 +43,8 @@ export default function ForgotPassword() {
 
   return (
     <ForgotPasswordContainer>
+      <Toaster position="top-right" reverseOrder={false} />
+
       <img src={Logo} alt="domazzi" />
 
       <form onSubmit={handleSubmit}>
@@ -47,11 +60,13 @@ export default function ForgotPassword() {
 
         {error && <span className="error">{error}</span>}
 
-        <button>Enviar</button>
+        <button disabled={isLoading}>Enviar</button>
 
         <Link to="/">
           <span>&lt;</span>Voltar para o login
         </Link>
+
+        <Loading isLoading={isLoading} size={26} />
       </form>
     </ForgotPasswordContainer>
   )

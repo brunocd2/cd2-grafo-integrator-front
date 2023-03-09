@@ -14,34 +14,20 @@ export default function GlobalProvider({ children }) {
     {title: 'Notamos gastos anormalmente altos no mês de Fevereiro.', description: 'lorem ipsum dolor sit amet', type: 'warning', date: '06/02/2023'},
   ]);
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [partners, setPartners] = useState([]);
   const [session, setSession] = useState(null);
-
-  useEffect(() => {
-    if(products.length > 0) {
-      let categories = [];
-      let partners = [];
-      products.forEach(product => {
-        if(!categories.some(category => category === product.categoria)) {
-          categories.push(product.categoria);
-        }
-        if(!partners.some(partner => partner === product.parceiro)) {
-          partners.push(product.parceiro);
-        }
-      });
-      setCategories(categories);
-      setPartners(partners);
-    }
-  }, [products]);
 
   return (
     <GlobalContext.Provider value={{
       user, setUser, 
       notifications, setNotifications,
       products, setProducts,
-      categories, partners,
-      session, setSession
+      categories, setCategories,
+      partners, setPartners,
+      session, setSession,
+      filteredProducts, setFilteredProducts
     }}>
       {children}
     </GlobalContext.Provider>
