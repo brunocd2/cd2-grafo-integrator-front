@@ -20,7 +20,7 @@ export default function Login() {
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { setProducts, setSession } = useContext(GlobalContext);
+  const { setProducts, setSession, setCategories, setPartners } = useContext(GlobalContext);
   const navigate = useNavigate();
 
   function handleChangeVisibility() {
@@ -38,16 +38,32 @@ export default function Login() {
       login({
         email,
         password
-      }).then((isFirstAccess) => {
-        setSession({ email, password });
+      }).then((data) => {
+        setSession({
+          email, password,
+          ...data
+        });
 
         getAllProducts().then(products => {
           setIsLoading(false);
           setProducts(products);
 
-          const isFirstAccess = false; // true
+          let categories = [];
+          let partners = [];
 
-          isFirstAccess
+          products.forEach(product => {
+            if (!categories.some(category => category === product.categoria)) {
+              categories.push(product.categoria);
+            }
+            if (!partners.some(partner => partner === product.parceiro)) {
+              partners.push(product.parceiro);
+            }
+          });
+
+          setCategories(categories);
+          setPartners(partners);
+
+          data.first_acess
             ? navigate('/primeiro-acesso')
             : navigate('/dashboard');
         });

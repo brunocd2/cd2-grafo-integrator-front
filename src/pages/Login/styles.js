@@ -63,6 +63,7 @@ export const LoginRightWrapper = styled.main`
     font-weight: 500;
     font-size: 22px;
     margin-bottom: 4.5rem;
+    text-align: center;
   
     @media (max-width: 700px) {
       margin-bottom: 2.5rem;

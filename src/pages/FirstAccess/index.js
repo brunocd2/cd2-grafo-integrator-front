@@ -25,58 +25,61 @@ export default function FirstAccess() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if(!newPassword || !confirmPassword ) {
-    setError('Preencha os campos!');
-    } else if(newPassword !== confirmPassword) {
+    if (!newPassword || !confirmPassword) {
+      setError('Preencha os campos!');
+    } else if (newPassword !== confirmPassword) {
       setError('Verifique as senhas digitas!');
     } else {
       setIsLoading(true);
-      firstAccess(session.email, newPassword).then(() => {
-        navigate('/dashboard');
 
-      }).catch((err) => {
-        setError('Falha ao atualizar senha!');
-        console.log(err);
-      })
-      setIsLoading(false);
+      firstAccess(session, newPassword)
+        .then(() => {
+          navigate('/dashboard');
+        }).catch((err) => {
+          setError('Falha ao atualizar senha!');
+          console.log(err);
+
+          setIsLoading(false);
+        })
     }
-  } 
+  }
 
   return (
     <>
       <LoginLeftWrapper>
-        <img src={Logo} alt="CD2 Grafo Integrator"/>
+        <img src={Logo} alt="CD2 Grafo Integrator" />
         <h2>Bem vindo(a) ao <br /> Portal Analytics.</h2>
       </LoginLeftWrapper>
+
       <LoginRightWrapper>
         <img src={LogoMobile} alt="CD2 Grafo Integrator" />
-        <h2>Este é seu primeiro <br/> acesso na aplicação.</h2>
+        <h2>Este é seu primeiro <br /> acesso na aplicação.</h2>
         <p>Crie uma nova senha para entrar.</p>
         <form onSubmit={handleSubmit}>
-          <InputWithIcon 
-            label="Nova Senha" placeholder="Insira a nova senha" 
-            value={newPassword} setValue={setNewPassword} 
+          <InputWithIcon
+            label="Nova Senha" placeholder="Insira a nova senha"
+            value={newPassword} setValue={setNewPassword}
             left={{ src: LockIcon }}
             right={{
               src: showNewPassword ? VisibilityOffIcon : VisibilityIcon,
-              onClick: () => setShowNewPassword(!showNewPassword) 
+              onClick: () => setShowNewPassword(!showNewPassword)
             }}
             type={showNewPassword ? 'text' : 'password'}
           />
 
-          <InputWithIcon 
-            label="Confirmar Senha" placeholder="Confirme a senha" 
-            value={confirmPassword} setValue={setConfirmPassword} 
-            left={{ src: LockIcon, }} 
+          <InputWithIcon
+            label="Confirmar Senha" placeholder="Confirme a senha"
+            value={confirmPassword} setValue={setConfirmPassword}
+            left={{ src: LockIcon, }}
             right={{
               src: showConfirmPassword ? VisibilityOffIcon : VisibilityIcon,
-              onClick: () => setShowConfirmPassword(!showConfirmPassword) 
+              onClick: () => setShowConfirmPassword(!showConfirmPassword)
             }}
             type={showConfirmPassword ? 'text' : 'password'}
           />
-          
+
           {error && <span className="error">{error}</span>}
-          
+
           <Button color="branding" text="Concluir" />
         </form>
         <Loading isLoading={isLoading} />
