@@ -7,7 +7,7 @@ import UserIcon from '../../assets/icons/user.png';
 import UsersIcon from '../../assets/icons/users.png';
 import MailIcon from '../../assets/icons/mail.png';
 import { newUser } from "../../services/api";
-import { toastError, toastSuccess } from "../../utils/toasts";
+import { toastError, toastSuccess } from "../../utils/toast";
 import { Toaster } from "react-hot-toast";
 
 export default function CreateUser() {

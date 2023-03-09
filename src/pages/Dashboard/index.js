@@ -39,12 +39,14 @@ export default function Dashboard() {
           <h1>Olá, {session.name} {session.last_name}</h1>
           <small>Bem vindo(a) de volta!</small>
         </div>
+
         <img src={user.avatar} alt={session.name} />
       </DashboardHeader>
 
       <DashboardFilterArea>
         <div>
           <label>Filtrar:</label>
+
           <div>
             <select>
               {dates.map(date => <option key={date} value={date}>{date}</option>)}
@@ -58,78 +60,71 @@ export default function Dashboard() {
           </div>
         </div>
 
+        <div className="search">
+          <InputWithIcon
+            placeholder="Filtre por produto"
+            right={{ src: SearchIcon }}
+          />
+        </div>
       </DashboardFilterArea>
 
       <CardsArea>
         <div className="cards">
-          <div>
-            <InputWithIcon
-              placeholder="Filtre por produto"
-              right={{ src: SearchIcon }}
+          <div className="cardRow">
+            <Card
+              title="Total Geral de Produtos Importados"
+              value="1278 un." gains={2.5}
+              detail="1034 un. - último mês"
+            />
+
+            <Card
+              title="Total Geral de Produtos Únicos"
+              value="1112 un." gains={0.5}
+              detail="1050 un. - último mês"
             />
           </div>
 
-          <ChartsRow>
-            <BarCharts />
-          </ChartsRow>
+          <div className="cardRow">
+            <Card title="Importações Realizadas Hoje" value="12 unidades." noComparison />
 
-          <PieChart />
-
-          <div className="cardRow" >
             <Card
               title="Clientes Importados"
               value="4 clientes" gains={-50}
               detail="8 clientes - último mês"
             />
           </div>
-
-          <Card
-            title="Total Geral de Produtos Importados"
-            value="1278 un." gains={2.5}
-            detail="1034 un. - último mês"
-          />
-
-          <Card
-            title="Total Geral de Produtos Únicos"
-            value="1112 un." gains={0.5}
-            detail="1050 un. - último mês"
-          />
-
-          <Card title="Importações Realizadas Hoje" value="12 unidades." noComparison />
-
-          <Card
-            title="Clientes Importados"
-            value="4 clientes" gains={-50}
-            detail="8 clientes - último mês"
-          />
-
-          <DefaultDashboardContainer title="Resumo do Produto">
-            <h3>Coca Cola 2L</h3>
-            <ul>
-              <li>
-                Parceiro: <select>
-                  <option>Hippo</option>
-                  <option>Zaffari</option>
-                  <option>Super Pão</option>
-                  <option>Armazém do Grão</option>
-                </select>
-              </li>
-
-              <li>Categoria: Mercearia</li>
-              <li>Exportador: Brand Distribuição</li>
-              <span />
-
-              <li>Data Entrada: 09/02/23</li>
-              <li>Data Saída: 09/02/23</li>
-              <span />
-
-              <li>Preço Entrada: R$14,48</li>
-              <li>Preço Saída: R$15,57</li>
-            </ul>
-          </DefaultDashboardContainer>
         </div>
 
+        <DefaultDashboardContainer title="Resumo do Produto">
+          <h3>Coca Cola 2L</h3>
+
+          <ul>
+            <li>Parceiro: <select>
+              <option>Hippo</option>
+              <option>Zaffari</option>
+              <option>Super Pão</option>
+              <option>Armazém do Grão</option>
+            </select>
+            </li>
+
+            <li>Categoria: Mercearia</li>
+            <li>Exportador: Brand Distribuição</li>
+            <span />
+
+            <li>Data Entrada: 09/02/23</li>
+            <li>Data Saída: 09/02/23</li>
+            <span />
+
+            <li>Preço Entrada: R$14,48</li>
+            <li>Preço Saída: R$15,57</li>
+          </ul>
+        </DefaultDashboardContainer>
       </CardsArea>
+
+      <ChartsRow>
+        <BarCharts />
+        <PieChart />
+      </ChartsRow>
 
       <MetricProducts>
         <h2>Métricas do Produto</h2>
@@ -139,7 +134,7 @@ export default function Dashboard() {
             <tr>{metricsHeader.map((th, index) =>
               <React.Fragment key={index}>
                 <th>{th}</th>
-                {index === 0 && <th></th>}
+                {index === 0 && <th className="divider"></th>}
               </React.Fragment>
             )}</tr>
           </thead>
@@ -150,8 +145,7 @@ export default function Dashboard() {
                 {tr.map((td, tdIndex) =>
                   <React.Fragment key={tdIndex}>
                     <td>{td}</td>
-                    {tdIndex === 0}
-
+                    {tdIndex === 0 && <td className="divider"></td>}
                   </React.Fragment>
                 )}
               </tr>
