@@ -12,7 +12,7 @@ import { Toaster } from "react-hot-toast";
 
 export default function CreateUser() {
   const [permissions, setPermissions] = useState([
-    'Administrador', 'Permissão #2', 'Gerente', 'Permissão #3', 'Permissão #1', 'Permissão #4'
+    'Administrador',  'Gerente'
   ])
 
   const [name, setName] = useState('');
@@ -43,32 +43,31 @@ export default function CreateUser() {
     <CreateUserWrapper>
       <Toaster position="top-right" reverseOrder={false} />
 
-      <h6>Novo Usuário</h6>
+      <h3>Novo Usuário</h3>
       
       <form onSubmit={handleSubmit}>
         <span className="row">
           <InputWithIcon
-            placeholder="Nome"
-            label="Nome *"
+            placeholder="Nome *"
             left={{ src: UserIcon }}
             value={name} setValue={setName}
           />
 </span>
 <span className="row">
           <InputWithIcon
-            placeholder="Sobrenome"
+            placeholder="Sobrenome *"
             left={{ src: UsersIcon }}
             value={lastName} setValue={setLastName}
           />
         </span>
 
         <InputWithIcon
-          placeholder="E-mail"
+          placeholder="E-mail *"
           left={{ src: MailIcon }}
           value={email} setValue={setEmail}
         />
 
-        <h2>Profiles</h2>
+        <h2>Selecione o Perfil</h2>
 
         <div className="permissions">
           {permissions.map((permission, index) =>
