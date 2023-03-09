@@ -16,7 +16,7 @@ export const DashboardWrapper = styled.main`
 export const DashboardHeader = styled.header`
   width: 100%;
   display: flex;
-  margin-top: 10%;
+  justify-content: space-between;
 
   h1 {
     font-size: 24px;
@@ -33,7 +33,7 @@ export const DashboardHeader = styled.header`
 
   small {
     font-family: 'Poppins', sans-serif;
-    font-size: 10px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--gray3);
 
@@ -45,7 +45,7 @@ export const DashboardHeader = styled.header`
   img {
     width: 56px;
     border-radius: 100%;
-
+    
     @media (max-width: 800px) {
       margin-right: 4rem;
     }
@@ -64,7 +64,7 @@ export const DashboardFilterArea = styled.div`
 
   > div.search {
     margin-left: 10px;
-
+    
     @media (max-width: 800px) {
       width: 100%;
       margin-left: 0;
@@ -76,8 +76,9 @@ export const DashboardFilterArea = styled.div`
     display: flex;
     align-items: center;
 
+
     > label {
-      font-size: 10px;
+      font-size: 14px;
       margin-right: 12px;
       color: var(--black2);
     }
@@ -100,10 +101,9 @@ export const DashboardFilterArea = styled.div`
 
 export const CardsArea = styled.section`
   display: flex;
-
   @media (max-width: 800px) {
-    flex-direction: column;
-  }
+      flex-direction: column;
+    }
   
   div.cards {
     width: 100%;
@@ -112,7 +112,6 @@ export const CardsArea = styled.section`
       @media (max-width: 800px) {
         flex-direction: column;
       }
-
       display: flex;
       flex: 1;
     }
@@ -125,6 +124,7 @@ export const CardsArea = styled.section`
       display: flex;
       flex-direction: column;
       font-family: 'Poppins', sans-serif;
+      margin-right: 20px;
       margin-bottom: 20px;
       flex: 1;
 
@@ -133,14 +133,14 @@ export const CardsArea = styled.section`
       }
 
       h3 {
-        font-size: 14px;
+        font-size: 1rem;
         margin-bottom: 1rem;
       }
 
       span {
         display: flex;
         align-items: center;
-        font-size: 22px;
+        font-size: 28px;
         color: var(--branding);
         font-weight: bold;
         margin-bottom: 4px;
@@ -174,13 +174,20 @@ export const CardsArea = styled.section`
 
 export const DefaultDashboardWrapper = styled.section`
   display: flex;
-  width: 100%;
   flex-direction: column;
   background-color: #FFFFFF;
   border: 1px solid #E7E8F2;
   border-radius: 6px;
   margin-bottom: 20px;
+  min-width: 350px;
+  width: 100%;
   flex: ${props => props.isBarChart ? 1 : '0'};
+  margin-left: ${props => props.isPieChart ? '20px' : '0'};
+
+  @media (max-width: 800px) {
+    margin-left: 0;
+    padding-bottom: 1rem;
+  }
   
   select.chart {
     margin: 1rem 0;
@@ -193,7 +200,7 @@ export const DefaultDashboardWrapper = styled.section`
 
     h3 {
       font-weight: 500;
-      font-size: 10px;
+      font-size: 14px;
       margin-right: auto;
       color: var(--branding);
     }
@@ -207,29 +214,26 @@ export const DefaultDashboardWrapper = styled.section`
 
   div.content {
     padding: 0 40px;
-    padding-bottom:50px; 
     padding-top: ${props => props.isBarChart ? '2rem' : '0'};
 
     h3 {
       font-family: 'Inter';
       font-weight: 500;
-      font-size: 10px;
+      font-size: 14px;
       text-align: center;
       margin: 1rem 0;
     }
 
     select {
       margin-bottom: 0.5rem;
-      width:80%
     }
 
     span {
       margin: 1rem;
     }
-
     li {
       font-family: "Inter";
-      font-size: 10px;
+      font-size: 14px;
       font-weight: 500;
     }
   }
@@ -253,14 +257,14 @@ export const PieChartLegendValue = styled.div`
   flex: 1;
   font-family: 'Inter', sans-serif;
   z-index: 2;
-
+  
   &:not(:last-child) {
     border-right: 1px solid #E7E8F2;
   }
 
   span:first-child {
     color: ${props => props.color};
-    font-size: 13px;
+    font-size: 18px;
     font-weight: 500;
   }
 
@@ -269,11 +273,11 @@ export const PieChartLegendValue = styled.div`
     color: var(--gray4);
     border-right: 0;
   }
+
 `
 
 export const ChartsRow = styled.section`
   display: flex;
-
   @media (max-width: 800px) {
     flex-direction: column;
   }
@@ -281,7 +285,6 @@ export const ChartsRow = styled.section`
 
 export const MetricProducts = styled.section`
   padding-top: 1.5rem;
-
   h2 {
     display: inline;
     color: var(--branding);
@@ -294,10 +297,10 @@ export const MetricProducts = styled.section`
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     margin: 1rem 0;
-
+    
     th {
       color: var(--gray3);
-      font-size: 10px;
+      font-size: 14px;
       text-align: start;
 
       @media (max-width: 800px) {
@@ -312,14 +315,14 @@ export const MetricProducts = styled.section`
     }
 
     td {
-      font-size: 13px;
+      font-size: 18px;
       color: var(--black2);
-      padding-top: 0.8rem;
+      padding-top: 0.8rem;       
 
       @media (max-width: 800px) {
         font-size: 0.8rem;
       }
-
+      
       &.divider {
         display: flex;
         width: 100px;
@@ -334,4 +337,5 @@ export const MetricProducts = styled.section`
       }
     }
   }
+
 `
