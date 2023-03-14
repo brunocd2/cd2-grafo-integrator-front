@@ -70,6 +70,10 @@ export const LoginRightWrapper = styled.main`
     }
   }
 
+  h3 {
+    margin-bottom: 2rem;
+  }
+
   p {
     font-size: 24px;
     font-family: Inter, sans-serif;

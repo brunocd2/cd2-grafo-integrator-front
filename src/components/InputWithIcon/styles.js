@@ -19,7 +19,6 @@ export const InputWithIconWrapper = styled.div`
     display: flex;
     padding: 0 16px;
     position: relative;
-    margin-right: 40px;
     width: 280px;
     img {
       margin: auto 0px;
