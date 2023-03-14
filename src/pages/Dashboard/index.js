@@ -311,13 +311,13 @@ export default function Dashboard() {
       filtered.forEach(product => {
         const { qtd_ult_compra, qtd_ult_saida, estq_disponivel } = product;
         if (estq_disponivel) {
-          stock = stock + parseInt(estq_disponivel);
+          stock = stock + Math.trunc(Number(estq_disponivel));
         }
         if (qtd_ult_compra) {
-          amountEntry = amountEntry + parseInt(qtd_ult_compra);
+          amountEntry = amountEntry + Math.trunc(Number(qtd_ult_compra));
         }
         if (qtd_ult_saida) {
-          amountLastExit = amountLastExit + parseInt(qtd_ult_saida);
+          amountLastExit = amountLastExit + Math.trunc(Number(qtd_ult_saida));
         }
       })
       result.push(stock + ' un.', amountEntry + ' un.', amountLastExit + ' un.');
