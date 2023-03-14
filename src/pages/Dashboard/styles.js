@@ -7,48 +7,25 @@ export const DashboardWrapper = styled.main`
   flex: 1;
   max-height: 100vh;
   overflow-x: auto;
-
-  @media (max-width: 800px) {
-    padding: 0.5rem;
-  }
 `
 
 export const DashboardHeader = styled.header`
   width: 100%;
   display: flex;
-  justify-content: space-between;
-
+  margin-top: 10%;
   h1 {
     font-size: 24px;
     color: var(--black);
-
-    @media(max-width: 400px) {
-      font-size: 20px;
-    }
-
-    @media(max-width: 350px) {
-      font-size: 18px;
-    }
   }
-
   small {
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 600;
     color: var(--gray3);
-
-    @media(max-width: 350px) {
-      font-size: 12px;
-    }
   }
-
   img {
     width: 56px;
     border-radius: 100%;
-    
-    @media (max-width: 800px) {
-      margin-right: 4rem;
-    }
   }
 `
 
@@ -56,33 +33,18 @@ export const DashboardFilterArea = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 2rem 0;
-
-  @media (max-width: 800px) {
-    flex-direction: column;
-    margin: 1rem 0;
-  }
-
-  > div.search {
-    margin-left: 10px;
-    
-    @media (max-width: 800px) {
-      width: 100%;
-      margin-left: 0;
-      margin-top: 1rem;
-    }
-  }
-
   div {
     display: flex;
     align-items: center;
-
-
+    > div {
+      margin-left: 10px;
+    }
     > label {
-      font-size: 14px;
+      font-size: 10px;
       margin-right: 12px;
       color: var(--black2);
+      margin-right: 0;
     }
-
     > label > input{
       height: 32px;
       width: 150px;
@@ -90,7 +52,6 @@ export const DashboardFilterArea = styled.div`
       background-color: var(--bg-gray);
     }
   }
-
   span {
     margin: 0.5rem;
     background-color: var(--gray4);
@@ -101,21 +62,38 @@ export const DashboardFilterArea = styled.div`
 
 export const CardsArea = styled.section`
   display: flex;
-  @media (max-width: 800px) {
-      flex-direction: column;
-    }
   
+  div.filterProducts {
+    margin-bottom: 1.5rem;
+    div.searchResult {
+      max-height: 150px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 0.5rem;
+      background-color: #FFFFFF;
+      border: 1px solid #E7E8F2;
+      margin-bottom: 0.5rem;
+      margin-top: 0.2rem;
+      border-radius: 6px;
+
+      span {
+        cursor: pointer;
+        padding: 0.2rem;
+        &:hover {
+          background-color: #E7E8F2;
+        }
+      }
+    }
+  }
+
   div.cards {
     width: 100%;
-
     div.cardRow {
-      @media (max-width: 800px) {
-        flex-direction: column;
-      }
       display: flex;
       flex: 1;
     }
-
     div.card {
       padding: 1rem;
       border: 1px solid #E7E8F2;
@@ -124,123 +102,105 @@ export const CardsArea = styled.section`
       display: flex;
       flex-direction: column;
       font-family: 'Poppins', sans-serif;
-      margin-right: 20px;
       margin-bottom: 20px;
       flex: 1;
-
-      @media (max-width: 800px) {
-        margin-right: 0;
-      }
-
       h3 {
-        font-size: 1rem;
+        font-size: 14px;
         margin-bottom: 1rem;
       }
-
       span {
         display: flex;
         align-items: center;
-        font-size: 28px;
+        font-size: 22px;
         color: var(--branding);
         font-weight: bold;
         margin-bottom: 4px;
-
         img {
           margin-left: 4px;
         }
       }
-
-      span.profit, span.loss {
+      span.profit, span.loss, span.zero {
         margin-left: 12px;
         font-size: 16px;
         font-weight: 400;
       }
-
       span.profit {
         color: var(--dark-green);
       }
-
       span.loss {
         color: var(--red);
       }
-
+      span.zero {
+        color: #A7A9C0;
+      }
       small {
         font-size: 13px;
         color: var(--gray4);
       }
     }
   }
+
+  
+  select {
+    margin-bottom: 1rem;
+  }
 `
 
 export const DefaultDashboardWrapper = styled.section`
   display: flex;
+  width: 100%;
   flex-direction: column;
   background-color: #FFFFFF;
   border: 1px solid #E7E8F2;
   border-radius: 6px;
   margin-bottom: 20px;
-  min-width: 350px;
-  width: 100%;
   flex: ${props => props.isBarChart ? 1 : '0'};
-  margin-left: ${props => props.isPieChart ? '20px' : '0'};
-
-  @media (max-width: 800px) {
-    margin-left: 0;
-    padding-bottom: 1rem;
-  }
   
   select.chart {
     margin: 1rem 0;
   }
-
   header {
     display: flex;
     border-bottom: 1px solid #E7E8F2;
     padding: 14px;
-
     h3 {
       font-weight: 500;
-      font-size: 14px;
+      font-size: 10px;
       margin-right: auto;
       color: var(--branding);
     }
-
     > span {
       color: #A7A9C0;
       font-weight: bold;
       cursor: pointer;
     }
   }
-
   div.content {
     padding: 0 40px;
+    padding-bottom:50px; 
     padding-top: ${props => props.isBarChart ? '2rem' : '0'};
-
     h3 {
       font-family: 'Inter';
       font-weight: 500;
-      font-size: 14px;
+      font-size: 10px;
       text-align: center;
       margin: 1rem 0;
     }
-
     select {
       margin-bottom: 0.5rem;
+      width:80%
     }
-
     span {
       margin: 1rem;
     }
     li {
       font-family: "Inter";
-      font-size: 14px;
+      font-size: 10px;
       font-weight: 500;
     }
   }
-
   legend.pieChartLegend {
     display: flex;
-
     div > span {
       margin: 0;
       margin-bottom: 4px;
@@ -261,26 +221,20 @@ export const PieChartLegendValue = styled.div`
   &:not(:last-child) {
     border-right: 1px solid #E7E8F2;
   }
-
   span:first-child {
     color: ${props => props.color};
-    font-size: 18px;
+    font-size: 13px;
     font-weight: 500;
   }
-
   span:last-child {
     font-size: 13px;
     color: var(--gray4);
     border-right: 0;
   }
-
 `
 
 export const ChartsRow = styled.section`
   display: flex;
-  @media (max-width: 800px) {
-    flex-direction: column;
-  }
 `
 
 export const MetricProducts = styled.section`
@@ -291,7 +245,6 @@ export const MetricProducts = styled.section`
     font-size: 20px;
     border-bottom: 1px solid var(--branding);
   }
-
   table {
     width: 100%;
     font-family: 'Poppins', sans-serif;
@@ -300,42 +253,29 @@ export const MetricProducts = styled.section`
     
     th {
       color: var(--gray3);
-      font-size: 14px;
+      font-size: 10px;
       text-align: start;
-
-      @media (max-width: 800px) {
-        font-size: 13px;
-      }
-
-      &.divider {
-        @media (max-width: 800px) {
-          display: none;
-        }
+    
+      &.center {
+        text-align: center;
       }
     }
-
     td {
-      font-size: 18px;
+      font-size: 13px;
       color: var(--black2);
-      padding-top: 0.8rem;       
-
-      @media (max-width: 800px) {
-        font-size: 0.8rem;
-      }
+      padding-top: 0.8rem;    
       
-      &.divider {
-        display: flex;
-        width: 100px;
-        height: 1px;
-        background-color: var(--gray4);
-        padding-top: 0;       
-        margin-top: 25px;
-        
-        @media (max-width: 800px) {
-          display: none;
-        }
+      &.center {
+        text-align: center;
       }
+    }
+    .divider {
+      display: flex;
+      width: 100px;
+      height: 1px;
+      background-color: var(--gray4);
+      padding-top: 0;       
+      margin-top: 25px;
     }
   }
-
 `

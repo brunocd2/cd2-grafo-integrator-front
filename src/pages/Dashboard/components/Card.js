@@ -10,9 +10,10 @@ export default function Card({ title, value, gains, detail, noComparison = false
         {value}
 
         {!noComparison && (
-          <span className={gains > 0 ? 'profit' : 'loss'}>
-            {gains > 0 ? `+${gains}` : `${gains}`}%
-            <img src={gains > 0 ? ProfitIcon : LossIcon} alt="" />
+          <span className={gains > 0 ? 'profit' : gains > 0 ? 'loss' : 'zero'}>
+            {gains === 'Infinity' ? '' : gains > 0 ? `+${gains}` : `${gains}`}
+            {gains === 'Infinity' ? '' : '%'}
+            {(gains > 0 || gains < 0) && <img src={gains > 0 ? ProfitIcon : LossIcon} alt="" />}
           </span>
         )}
       </span>
