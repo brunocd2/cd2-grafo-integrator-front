@@ -90,11 +90,10 @@ export default function Login() {
       <LoginRightWrapper>
         <img src={LogoMobile} alt="domazzi" />
 
-
-        <center><h3>Agregando valor ao seu negócio  <br /> através de análise de dados de ponta.</h3>
+        <center>
+          <h3>Agregando valor ao seu negócio <br /> através de análise de dados de ponta.</h3>
         </center>
-        <p></p>
-        <br></br>
+
         <form onSubmit={handleSubmit}>
           <InputWithIcon
             placeholder="Insira seu e-mail"
@@ -116,8 +115,7 @@ export default function Login() {
 
           {error && <span className="error">{error}</span>}
 
-          <center><Link to="/nova-senha">Esqueceu a senha?</Link>
-          </center>
+          <Link to="/nova-senha">Esqueceu a senha?</Link>
           <Button color="branding" text="Acessar" />
         </form>
 

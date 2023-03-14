@@ -1,38 +1,27 @@
 import DefaultDashboardContainer from './DefaultDashboardContainer';
 import { Chart } from 'react-google-charts'
-import { useState } from 'react';
 import { PieChartLegendValue } from '../styles';
 
-export default function PieChart({}) {
-  const [data, setData] = useState([
-    ["Parceiro", "Vendas"],
-    ["Hippo", 60],
-    ["Zaffari", 25,],
-    ["Super pão", 15],
-  ])
+export default function PieChart({ data }) {
+  const colors = ["#784EDE", "#00ADDD", "#4E73DF"];
 
-  const [chartPieLegend, setChartPieLegend] = useState([
-    {label: "Hippo", value: "60", color: "#4E73DF"},
-    {label: "Zaffari", value: "25", color: "#00ADDD"},
-    {label: "Super Pão", value: "15", color: "#784ede"},
-  ]);
-  
   const options = {
     pieHole: 0.4,
-    colors: ["#784EDE", "#00ADDD", "#4E73DF"],
+    colors,
     legend: 'none',
     pieSliceTextStyle: {
-      fontSize: 10,
+      fontSize: 15,
     },
     pieSliceText: 'value',
+
     chartArea: {
       width: '100%',
       height: '80%'
-    }
+    },
   };
-  
+
   return (
-    <DefaultDashboardContainer title="Entradas x Parceiro (un)" isChart isPieChart>
+    <DefaultDashboardContainer title="Saídas x Parceiro (Categoria)" isChart isPieChart>
       <Chart
         chartType='PieChart'
         data={data}
@@ -42,14 +31,17 @@ export default function PieChart({}) {
       />
 
       <legend className='pieChartLegend'>
-        {chartPieLegend.map((partner, index) =>
+        {data.map((row, index) =>
+          index > 0 &&
           <PieChartLegendValue
             key={index}
-            color={partner.color}
+            color={colors[index - 1]}
           >
-            <span>{partner.value}</span>
-            <span>{partner.label}</span>
-          </PieChartLegendValue> 
+            {row.map(el =>
+              <span>{el}</span>
+            )}
+            {/* <span>{partner.label}</span> */}
+          </PieChartLegendValue>
         )}
       </legend>
     </DefaultDashboardContainer>

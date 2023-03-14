@@ -19,6 +19,7 @@ export default function ForgotPassword() {
 
   function handleSubmit(e) {
     if (e) e.preventDefault();
+    setIsLoading(true);
 
     if (!email) {
       setError('Favor, insira um email válido.');
